@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐣 U8 戰勝學測核單閃卡與互動學習網頁 Level 4 U8 pp. 77-85</title>
+<style>
+:root{
+  --cream:#FFF9E8; --mint:#E8F7EC; --peach:#FFE9E4; --pink:#FFD9E3;
+  --lemon:#FFF1B8; --lav:#EDE6FB; --sky:#DCEEFF;
+  --ink:#1E1B18; --ink2:#4A423C; --line:#E2D9CC;
+  --ok:#2E9E6B; --bad:#E06A8B; --gold:#E2A93B;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Microsoft JhengHei","微軟正黑體","Segoe UI",system-ui,-apple-system,sans-serif;
+  color:var(--ink); background:var(--mint);
+  background-image:radial-gradient(circle at 12% 8%,var(--lemon) 0,transparent 38%),
+                   radial-gradient(circle at 88% 4%,var(--pink) 0,transparent 34%),
+                   radial-gradient(circle at 50% 100%,var(--sky) 0,transparent 45%);
+  background-attachment:fixed;
+  line-height:1.65; -webkit-text-size-adjust:100%;
+}
+#fw{position:fixed;inset:0;pointer-events:none;z-index:50}
+header.bar{position:sticky;top:0;z-index:40;background:rgba(255,249,232,.94);
+  backdrop-filter:blur(6px);border-bottom:2px solid var(--line);}
+.barin{max-width:940px;margin:0 auto;padding:8px 12px;display:flex;align-items:center;gap:10px}
+.brand{font-size:16px;font-weight:800;letter-spacing:.5px;flex:1;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+button{font-family:inherit;cursor:pointer}
+.mbtn{border:2px solid var(--ink);background:var(--lemon);border-radius:12px;
+  padding:6px 12px;font-weight:800;font-size:14px;box-shadow:2px 2px 0 var(--ink);transition:.15s}
+.mbtn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+#menu{position:absolute;left:0;right:0;top:100%;display:none;padding:10px;
+  background:var(--cream);border-bottom:2px solid var(--line);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+#menu.open{display:block}
+.mgrid{max-width:940px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.tabb{border:2px solid var(--ink);background:#fff;border-radius:12px;padding:9px 10px;
+  font-weight:700;font-size:14px;text-align:left}
+.tabb.act{background:var(--pink)}
+.wrap{max-width:940px;margin:0 auto;padding:14px 12px 90px}
+section.pane{display:none;animation:fade .25s ease}
+section.pane.on{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+h2.ttl{font-size:20px;margin:6px 0 4px}
+.sub{font-size:13px;color:var(--ink2);margin:0 0 12px}
+.card{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:14px;
+  box-shadow:4px 4px 0 rgba(30,27,24,.18);margin-bottom:14px}
+.pill{display:inline-block;border:2px solid var(--ink);border-radius:999px;padding:2px 10px;
+  font-size:12px;font-weight:800;background:var(--lav)}
+.btn{border:2px solid var(--ink);border-radius:12px;padding:8px 14px;font-weight:800;font-size:14px;
+  background:#fff;box-shadow:3px 3px 0 var(--ink);transition:.15s}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.g{background:var(--mint)} .btn.p{background:var(--pink)} .btn.b{background:var(--sky)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sp{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+/* flip card */
+.flipwrap{perspective:1400px}
+.flip{position:relative;width:100%;min-height:500px;transition:transform .55s;transform-style:preserve-3d;cursor:pointer}
+.flip.f{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:2px solid var(--ink);border-radius:20px;padding:16px;overflow:auto;box-shadow:4px 4px 0 rgba(30,27,24,.18)}
+.front{background:var(--mint)}
+.back{background:var(--cream);transform:rotateY(180deg)}
+.bigw{font-size:36px;font-weight:900;letter-spacing:.5px;margin:10px 0 4px;word-break:break-word}
+.ph{color:var(--ink2);font-size:15px}
+.ex{border-left:5px solid var(--pink);padding:4px 0 4px 10px;margin:9px 0}
+.ex .en{font-weight:600}
+.ex .zh{font-size:14px;color:var(--ink2)}
+.col{background:var(--lemon);border:2px dashed var(--ink);border-radius:12px;padding:6px 10px;
+  margin:6px 0;font-size:14px;font-weight:700}
+.spk{border:2px solid var(--ink);background:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:800}
+input[type=text],textarea,select{font-family:inherit;font-size:15px;width:100%;padding:9px;
+  border:2px solid var(--ink);border-radius:12px;background:#fff}
+textarea{min-height:92px}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--ink);background:#fff;
+  border-radius:14px;padding:10px 12px;margin:7px 0;font-weight:700;font-size:15px;transition:.15s}
+.opt.ok{background:#CFF0DE} .opt.no{background:#FBD9E3} .opt.dim{opacity:.55}
+.ans{display:none;margin-top:8px;background:var(--sky);border:2px dashed var(--ink);
+  border-radius:12px;padding:10px;font-size:14px}
+.ans.show{display:block}
+.tok{border:2px solid var(--ink);background:var(--cream);border-radius:999px;padding:5px 11px;
+  font-weight:800;font-size:14px;margin:3px}
+.tok.sel{background:var(--pink);box-shadow:0 0 0 3px var(--gold)}
+.tok.used{opacity:.35;text-decoration:line-through}
+.blank{display:inline-block;min-width:118px;border-bottom:3px solid var(--ink);text-align:center;
+  font-weight:800;padding:2px 6px;cursor:pointer;background:var(--lemon);border-radius:6px 6px 0 0}
+.blank.ok{background:#CFF0DE}
+.gap{display:inline-block;min-width:52px;padding:1px 8px;font-size:15px;font-weight:800;
+  border-bottom:3px solid var(--ink);border-radius:6px 6px 0 0;background:var(--lemon);
+  vertical-align:baseline;cursor:pointer;color:var(--ink);text-align:center}
+.gap::after{content:" \25BE";font-size:12px}
+.gap.wrong{background:#FBD9E3}
+.gapdone{display:inline-block;padding:1px 8px;font-weight:800;background:#CFF0DE;
+  border-bottom:3px solid var(--ok);border-radius:6px 6px 0 0;vertical-align:baseline}
+#clmenu{display:none;position:absolute;z-index:70;background:var(--cream);
+  border:2px solid var(--ink);border-radius:14px;padding:8px;box-shadow:5px 5px 0 rgba(30,27,24,.25);
+  max-height:min(62vh,360px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+#clmenu .clmhd{font-size:13px;font-weight:800;margin:0 2px 6px;color:var(--ink2)}
+.clopt{display:block;width:100%;text-align:left;border:2px solid var(--ink);border-radius:999px;
+  padding:5px 12px;margin:4px 0;font-weight:800;font-size:14px;font-family:inherit;cursor:pointer}
+.clopt:active{transform:translate(2px,2px)}
+.fold{border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:10px}
+.fold>.hd{background:var(--lav);padding:8px 10px;font-weight:800;font-size:14px;cursor:pointer}
+.fold>.bd{max-height:260px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;padding:10px;display:block}
+.fold.cl>.bd{display:none}
+#wbFold,#clFold{position:sticky;top:52px;z-index:30;background:var(--cream);
+  box-shadow:0 6px 14px rgba(30,27,24,.15)}
+#wbFold>.hd,#clFold>.hd{position:sticky;top:0;z-index:2}
+#wbFold>.bd,#clFold>.bd{max-height:150px;background:var(--cream);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+#clFold>.bd{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
+#wbFold.cl,#clFold.cl{box-shadow:none}
+@media(min-width:700px){#wbFold>.bd,#clFold>.bd{max-height:190px}}
+.stat{font-size:13px;font-weight:800;background:var(--sky);border:2px solid var(--ink);
+  border-radius:10px;padding:4px 10px}
+.subcard{background:var(--lav);border:2px solid var(--ink);border-radius:18px;padding:14px;
+  box-shadow:4px 4px 0 rgba(30,27,24,.18);margin:20px 0 6px}
+.subttl{font-size:17px;font-weight:900;margin-bottom:8px}
+.subid{font-size:14px;font-weight:700;margin-bottom:10px;line-height:2.2}
+.subid input{border:2px solid var(--ink);border-radius:10px;padding:5px 8px;font-family:inherit;
+  font-size:14px;width:118px;background:#fff}
+.subbtn{display:block;width:100%;text-align:left;border:2px solid var(--ink);border-radius:12px;
+  background:#fff;padding:10px 12px;font-weight:800;font-size:15px;margin:8px 0;
+  box-shadow:3px 3px 0 var(--ink);transition:.15s}
+.subbtn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.subnote{display:block;margin-top:10px;font-size:14px;font-weight:700;background:var(--lemon);
+  border:2px solid var(--ink);border-radius:12px;padding:10px 12px;line-height:1.7}
+.subprev{display:none;margin-top:12px;background:#fff;border:2px dashed var(--ink);border-radius:14px;
+  padding:12px;max-height:460px;overflow:auto}
+.subprev.show{display:block}
+.subprev h1{font-size:18px;margin:0 0 4px}.subprev h2{font-size:16px;margin:12px 0 6px}
+.subprev .id{font-size:14px;font-weight:700}
+.subprev .sum{font-weight:700;background:var(--lemon);border:1px solid var(--line);border-radius:8px;padding:8px}
+.subprev table{border-collapse:collapse;width:100%;margin-top:8px;font-size:13px}
+.subprev th,.subprev td{border:1px solid #B9AE9C;padding:6px 8px;vertical-align:top;text-align:left}
+.subprev th{background:var(--mint)}.subprev .ok{color:var(--ok)}.subprev .no{color:var(--bad)}
+.subprev .empty{background:var(--peach);border:1px solid var(--line);border-radius:8px;padding:10px}
+.subprev .sign{margin-top:18px;border-top:1px dashed #B9AE9C;padding-top:10px;font-size:13px}
+#toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#4A342A;color:#fff;
+  padding:10px 18px;border-radius:999px;font-weight:700;z-index:60;opacity:0;pointer-events:none;transition:.3s;font-size:14px;max-width:92%}
+#toast.on{opacity:1}
+.sq{border:2px solid var(--ink);border-radius:10px;padding:6px 2px;text-align:center;font-size:11px;
+  font-weight:800;background:#fff;min-height:46px}
+.sq.here{background:var(--pink);box-shadow:0 0 0 3px var(--gold)}
+.grid18{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.dice{font-size:46px;text-align:center;line-height:1}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="fw"></canvas>
+
+<header class="bar">
+  <div class="barin">
+    <div class="brand">🐣 U8 戰勝學測核單閃卡與互動學習網頁 Level 4 U8 pp. 77-85</div>
+    <button class="mbtn" id="mtoggle">☰ 選單</button>
+  </div>
+  <div id="menu"><div class="mgrid" id="mgrid"></div></div>
+</header>
+
+<div class="wrap">
+  <div class="card" id="scorebar" style="display:none">
+    <div class="row">
+      <span class="stat">🏆 累計總分 <b id="tsc">0</b></span>
+      <span class="stat">📌 錯題池 <b id="wpc">0</b></span>
+    </div>
+  </div>
+
+  <!-- 1 閃卡初識 -->
+  <section class="pane" id="p0">
+    <h2 class="ttl">🃏 閃卡初識</h2>
+    <p class="sub">一次一張字卡。正面看拼字、詞性與字源（字首／字根／字尾）；翻面看中文、搭配詞與全部例句。</p>
+    <div class="flipwrap"><div class="flip" id="fc"><div class="face front" id="fcF"></div><div class="face back" id="fcB"></div></div></div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn g" onclick="wcard(-1)">⏫ 上一個</button>
+      <button class="btn p" onclick="flipCard()">🔄 翻轉</button>
+      <button class="btn b" onclick="wcard(1)">⏬ 下一個</button>
+    </div>
+  </section>
+
+  <!-- 2 例句閃卡 -->
+  <section class="pane" id="p1">
+    <h2 class="ttl">✍️ 鋸子英文15級分</h2>
+    <p class="sub">一張卡只放一句。正面是例句、朗讀與中譯；翻面才揭曉單字與詞性。</p>
+    <div class="flipwrap"><div class="flip" id="sc"><div class="face front" id="scF"></div><div class="face back" id="scB"></div></div></div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn g" onclick="scard(-1)">⏫ 上一句</button>
+      <button class="btn p" onclick="flipSent()">🔄 翻轉</button>
+      <button class="btn b" onclick="scard(1)">⏬ 下一句</button>
+      <button class="btn" onclick="shuffleSent()">🔀 打散順序</button>
+    </div>
+  </section>
+
+  <!-- 3 聽力填空 -->
+  <section class="pane" id="p2">
+    <h2 class="ttl">💡 聽！我多準</h2>
+    <p class="sub">每輪 5 題，一句只挖一格。按 🔊 可聽整句朗讀；可無限重試，按【📖 參考解答】才顯示答案與單字發音。</p>
+    <div class="row" style="margin-bottom:10px">
+      <span class="stat">第 <b id="lrd">1</b> 輪</span>
+      <button class="btn g" onclick="newListen()">🎧 開始 / 換一輪</button>
+    </div>
+    <div id="lbox"></div>
+  </section>
+
+  <!-- 4 對對碰 -->
+  <section class="pane" id="p3">
+    <h2 class="ttl">💡 字彙對對碰</h2>
+    <p class="sub">先點 Word Bank 選字（變色代表選中），再點中文語意旁的空格填入；再點空格可退回。每題皆可按 🔊 聽單字與例句朗讀。</p>
+    <div class="row" id="catrow" style="margin-bottom:8px"></div>
+    <div class="fold" id="wbFold">
+      <div class="hd" onclick="this.parentNode.classList.toggle('cl')">📚 Word Bank（點此收合／展開；欄內可上下滑動）</div>
+      <div class="bd row" id="wbank"></div>
+    </div>
+    <div id="mbox"></div>
+    <div class="row"><button class="btn p" onclick="checkMatch()">✅ Check answers</button>
+    <button class="btn" onclick="buildMatch()">🔀 重新出題</button></div>
+    <div id="mres" class="ans"></div>
+  </section>
+
+  <!-- 5 學測選擇題 -->
+  <section class="pane" id="p4">
+    <h2 class="ttl">💯 學測選擇題</h2>
+    <p class="sub">一次一題，按壓選項作答。作答後才會出現【📖 參考解答：】按鈕。</p>
+    <div class="row" style="margin-bottom:8px">
+      <span class="stat">第 <b id="qi">1</b></span>
+      <span class="stat">本回得分 <b id="qsc">0</b></span>
+      <label class="stat"><input type="checkbox" id="timerOn"> 計時中：開</label>
+      <span class="stat">⏱ <b id="qtm">20</b>s</span>
+    </div>
+    <div id="qbox"></div>
+  </section>
+
+  <!-- 6 文意選填 -->
+  <section class="pane" id="p5">
+    <h2 class="ttl">🐘📌 文意選填戰站讚</h2>
+    <p class="sub">點文章中的題號空格即展開彩色選項色塊，選完選單立刻收回題號空格裡，不會遮住題目。答對即鎖定並顯示詳解；答錯可無限重試。</p>
+    <div class="row" style="margin-bottom:8px">
+      <button class="btn g" onclick="loadCloze(0)">Passage 1</button>
+      <button class="btn b" onclick="loadCloze(1)">Passage 2</button>
+      <span class="stat" id="curStat">目前作答：<b id="curBlank">尚未選格</b></span>
+    </div>
+    <div class="card" id="clpass"></div>
+    <div id="clans"></div>
+  </section>
+
+  <!-- 7 句子優化 -->
+  <section class="pane" id="p6">
+    <h2 class="ttl">📐 不只會考試：句子優化ing</h2>
+    <p class="sub">把平淡無奇版句子升級成學測級句子。先看示範，再完成 10 題練習。</p>
+    <div class="card" style="background:var(--lemon)">
+      <b>示範 Example</b>
+      <div class="ex"><div class="en">🍼 平淡無奇版：The children fell off the bed. The mattress was soft. They did not get hurt.</div></div>
+      <div class="ex"><div class="en">🎓 學測版：A thick mattress <u>cushioned</u> the children's fall, so nobody got hurt.</div>
+      <div class="zh">升級點：was soft → <b>cushioned</b>（精準動詞，一字表「緩和衝擊」）；三句併一句，用 so 引導結果；nobody 取代 they did not 的否定句。</div></div>
+    </div>
+    <div id="ubox"></div>
+  </section>
+
+  <!-- 8 大富翁 -->
+  <section class="pane" id="p7">
+    <h2 class="ttl">🎲 大富翁闖關</h2>
+    <p class="sub">情境：校慶倒數。學生會籌備的永續校園活動在上線前夕，宣傳影片與企劃書同時消失，負責保存檔案的幹部 Ivy 被當成嫌犯。擲骰子沿 18 格線索走，答對題目就解鎖一段線索，走完全盤即可還她清白。</p>
+    <div class="card">
+      <div class="grid18" id="board"></div>
+      <div class="row" style="margin-top:10px">
+        <div class="dice" id="dice">🎲</div>
+        <button class="btn p" onclick="roll()">擲骰子</button>
+        <span class="stat">位置 <b id="pos">1</b> / 18</span>
+        <span class="stat">闖關得分 <b id="msc">0</b></span>
+        <button class="btn" onclick="resetBoard()">🔄 重新開始</button>
+      </div>
+    </div>
+    <div id="mqbox"></div>
+  </section>
+
+  <!-- 9 總分 -->
+  <section class="pane" id="p8">
+    <h2 class="ttl">🏆 查看累計總分</h2>
+    <p class="sub">進度存在這台裝置的瀏覽器（localStorage）。換裝置或清除瀏覽資料會歸零。</p>
+    <div class="card" style="background:var(--lemon)">
+      <div style="font-size:34px;font-weight:900" id="bigsc">0</div>
+      <div id="rank" style="font-weight:800"></div>
+      <div class="sub" id="ranktip"></div>
+    </div>
+    <div class="card">
+      <b>📌 錯題池（同一輪會再考一次，跨天也會保留）</b>
+      <div id="wplist" style="margin-top:8px"></div>
+      <button class="btn" onclick="clearAll()">🧹 清空紀錄</button>
+    </div>
+  </section>
+</div>
+
+<div id="toast"></div>
+<script>
+/* ================= 語音（0.9 倍速） ================= */
+let VOICES=[],VOICE=null;
+function pickVoice(){
+  try{VOICES=window.speechSynthesis.getVoices()||[]}catch(e){VOICES=[]}
+  VOICE=VOICES.find(v=>/en-US/i.test(v.lang)&&/natural|google|samantha|aria/i.test(v.name))
+      ||VOICES.find(v=>/en-US/i.test(v.lang))||VOICES.find(v=>/^en/i.test(v.lang))||null;
+}
+try{pickVoice();window.speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+function speak(t){
+  try{
+    window.speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(t);
+    u.lang='en-US'; u.rate=0.9; if(!VOICE)pickVoice(); if(VOICE)u.voice=VOICE;
+    setTimeout(()=>window.speechSynthesis.speak(u),60);
+  }catch(e){toast('此瀏覽器不支援朗讀功能')}
+}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');
+  clearTimeout(window.__tt);window.__tt=setTimeout(()=>t.classList.remove('on'),1800)}
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ================= 狀態 ================= */
+const KEY='u8lv4';
+let S={total:0,wrong:[]};
+try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function addScore(n){S.total=Math.max(0,S.total+n);save();paintScore();
+  const e=document.getElementById('tsc');if(e){e.classList.remove('pop');void e.offsetWidth;e.classList.add('pop')}}
+function addWrong(w){if(w&&!S.wrong.includes(w)){S.wrong.push(w);save();paintScore()}}
+function paintScore(){
+  ['tsc','bigsc'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=S.total});
+  const w=document.getElementById('wpc');if(w)w.textContent=S.wrong.length;
+  const r=document.getElementById('rank'),rt=document.getElementById('ranktip');
+  if(r){const lv=S.total>=20000?['🥇 學測核單大師','維持這個手感，開始練寫作長句。']
+    :S.total>=10000?['🥈 穩定輸出中','把錯題池清乾淨，下一階就是大師。']
+    :S.total>=4000?['🥉 漸入佳境','每天 20 分鐘，把 U8 的核心字讀進長期記憶，累積會翻轉結果。']
+    :['🌱 繼續加油','先把閃卡與例句卡讀熟，再回來挑戰測驗。'];
+    r.textContent=lv[0];if(rt)rt.textContent=lv[1];}
+  const wl=document.getElementById('wplist');
+  if(wl)wl.innerHTML=S.wrong.length?S.wrong.map(x=>'<span class="tok">'+x+'</span>').join(''):'<span class="sub">目前沒有錯題，保持下去！</span>';
+}
+function clearAll(){S={total:0,wrong:[]};save();paintScore();toast('紀錄已清空');}
+
+/* ================= 煙火 ================= */
+const cv=document.getElementById('fw'),cx=cv.getContext('2d');let ps=[];
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function fire(){const x=innerWidth*(.25+Math.random()*.5),y=innerHeight*(.2+Math.random()*.3);
+  const cols=['#FF9AB8','#FFD34D','#6FC8FF','#7BE0A6','#C6A4FF','#FFA870'];
+  for(let i=0;i<46;i++){const a=Math.random()*Math.PI*2,sp=1.6+Math.random()*4.4;
+    ps.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,l:62,c:rnd(cols)})}}
+(function loop(){cx.clearRect(0,0,cv.width,cv.height);
+  ps=ps.filter(p=>p.l>0);
+  ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.055;p.l--;
+    cx.globalAlpha=Math.max(p.l/62,0);cx.fillStyle=p.c;cx.beginPath();cx.arc(p.x,p.y,2.6,0,7);cx.fill()});
+  cx.globalAlpha=1;requestAnimationFrame(loop)})();
+
+/* ================= 資料：U8 pp.77-85 全部核心單字（37 字＋衍生字、反義字與比較字，共 63 筆） ================= */
+const W=[
+{w:"aggressive",ph:"[əˋɡrɛsɪv]",pos:"adj.",ch:"侵略的、好鬥的；積極進取的",yr:"112",
+ col:[["aggression [əˋɡrɛʃən] 5 (n. 攻擊性；侵略)"],["be aggressive in V-ing 積極地做……"],["aggressive behavior 攻擊性行為"]],
+ ex:[["The dog gets a little aggressive at times, so you need to be careful around it.","這隻狗有時候有一點攻擊性，所以你在牠旁邊時要小心。"],
+     ["The banker was very aggressive in trying to persuade me to open an account.","那位銀行員很積極地試著說服我開戶。"]]},
+{w:"aggression",ph:"[əˋɡrɛʃən]",pos:"n.",ch:"攻擊性；侵略",yr:"",
+ col:[["an act of aggression 侵略行為"],["衍 aggressive [əˋɡrɛsɪv] adj. 好鬥的；積極進取的"]],
+ ex:[["The country's act of aggression against its neighbor was condemned around the world.","這個國家對鄰國的侵略行為受到全世界的譴責。"]]},
+{w:"agreeable",ph:"[əˋɡriəbəl]",pos:"adj.",ch:"欣然贊同的；令人愉快的",yr:"111",
+ col:[["反 disagreeable [͵dɪsəˋɡriəbəl] adj. 令人不愉快的"],["衍 agree [əˋɡri] 1 v. 同意；贊同"],["衍 agreement [əˋɡrimənt] 1 n. 協議；協定"]],
+ ex:[["I suggested that we depart tomorrow at 8:00 a.m., and he seemed agreeable without expressing any objections.","我提議明天早上八點出發，他似乎同意並沒有提出異議。"],
+     ["They spent an agreeable afternoon together, enjoying each other's company.","他們一起度過了一個愉快的下午，享受彼此的陪伴。"]]},
+{w:"disagreeable",ph:"[͵dɪsəˋɡriəbəl]",pos:"adj.",ch:"令人不愉快的",yr:"",
+ col:[["字首 dis-＝相反、否定"],["a disagreeable smell 難聞的氣味"]],
+ ex:[["The medicine left a disagreeable taste in my mouth.","這藥在我嘴裡留下令人不舒服的味道。"]]},
+{w:"aquarium",ph:"[əˋkwɛrɪəm]",pos:"n.",ch:"魚缸；水族館",yr:"",
+ col:[["補 字尾 -arium 意指「與……有關的場地或事物」，如：planetarium [͵plænəˋtɛrɪəm] 天文館、insectarium [͵ɪnsɛkˋtɛrɪəm] 昆蟲館"]],
+ ex:[["Hank has a large aquarium filled with many fish in his living room.","漢克在他的客廳裡養了很多魚的大魚缸。"],
+     ["Amy loves to visit the aquarium to see the sharks being fed.","艾咪很喜歡去水族館看鯊魚餵食秀。"]]},
+{w:"broom",ph:"[brum]",pos:"n.",ch:"掃帚",yr:"107",
+ col:[["補 dustpan [ˋdʌst͵pæn] n. 畚箕"],["補 mop [mɑp] 2 n. 拖把"]],
+ ex:[["Cathy used a broom to sweep up the broken glass on the floor.","凱西用掃帚掃起地板上的破碎玻璃。"]]},
+{w:"coarse",ph:"[kors]",pos:"adj.",ch:"粗的；粗糙的；粗魯的",yr:"",
+ col:[["補 coarse sand 粗沙"],["補 coarse hands 粗糙的雙手"],["coarse behavior 粗魯的行為"]],
+ ex:[["To improve the flavor of the steak, you can eat it with some coarse salt.","為了增加牛排的風味，你可以加一些粗鹽搭配著吃。"],
+     ["Many sharks have coarse skin like sandpaper.","很多鯊魚有著像砂紙一般粗糙的皮膚。"],
+     ["The students were punished for their coarse behavior in the classroom.","這些學生因為在教室裡的粗魯行為而被處罰了。"]]},
+{w:"cushion",ph:"[ˋkʊʃən]",pos:"n.",ch:"墊子；坐墊",yr:"113",
+ col:[["a cushion on the seat 椅面上的坐墊"],["片 cushion the blow 緩解打擊；緩和不良狀況"]],
+ ex:[["This chair would be a lot more comfortable with a cushion on the seat.","這個椅子如果有坐墊會更舒服。"]]},
+{w:"cushion",ph:"[ˋkʊʃən]",pos:"v.",ch:"給……安上墊子；緩和……的衝擊",yr:"",
+ col:[["cushion sb.'s fall 減緩某人跌落的衝擊"],["片 cushion the blow 緩解打擊；緩和不良狀況"]],
+ ex:[["A mattress cushioned David's fall off the ladder, so he didn't sustain any serious injuries.","床墊減緩了大衛從梯子跌落下來的衝擊，所以他沒有受到嚴重的傷害。"],
+     ["She didn't get the job but another job offer cushioned the blow.","她沒有得到那份工作，但是另一份工作邀約緩解她的憂愁。"]]},
+{w:"dependent",ph:"[dɪˋpɛndənt]",pos:"adj.",ch:"依靠的；仰賴的",yr:"105",
+ col:[["be dependent on sb./sth. for sth. 在某方面依賴某人事物"],["反 independent [͵ɪndɪˋpɛndənt] adj. 獨立的；自立的"],["衍 depend [dɪˋpɛnd] 2 v. 依靠；依賴"]],
+ ex:[["Although Rick is an adult, he is still dependent on his parents for many things.","雖然瑞克是個成年人，但他有很多事情還是依賴父母。"]]},
+{w:"dependent",ph:"[dɪˋpɛndənt]",pos:"n.",ch:"受撫養親屬",yr:"",
+ col:[["victims and their dependents 受害者與他們需要撫養的家屬"]],
+ ex:[["The money will go to victims and their dependents.","這筆錢將會發給受害者他們需要撫養的家屬。"]]},
+{w:"independent",ph:"[͵ɪndɪˋpɛndənt]",pos:"adj.",ch:"獨立的；自立的",yr:"",
+ col:[["字首 in-＝不、非"],["be independent of 不受……支配"]],
+ ex:[["After getting her first job, Sandy became financially independent of her family.","找到第一份工作後，珊蒂在經濟上不再依賴家人。"]]},
+{w:"distribute",ph:"[dɪˋstrɪbjut]",pos:"v.",ch:"分發；分配",yr:"111-107-105",
+ col:[["補 distribute sth. to sb. 把……分給某人"],["衍 distribution [͵dɪstrəˋbjʊʃən] n. 分配；分布"]],
+ ex:[["The teacher distributed books to the students at the beginning of the school year.","老師在學期初將書本分發給學生。"]]},
+{w:"distribution",ph:"[͵dɪstrəˋbjʊʃən]",pos:"n.",ch:"分配；分布",yr:"113-105-104",
+ col:[["衍 distributor [dɪˋstrɪbjʊtɚ] n. 批發商；經銷商"],["population distribution 人口分布"]],
+ ex:[["Food distribution to the needy is handled by the United Nations.","分配給貧窮人們的食物是由聯合國所處理。"],
+     ["Paul bought a map showing the population distribution of Japan.","保羅買了一張標示日本人口分布的地圖。"]]},
+{w:"estimate",ph:"[ˋɛstə͵met]",pos:"v.",ch:"估計；推斷",yr:"105-104",
+ col:[["補 overestimate [͵ovɚˋɛstə͵met] v. 高估"],["補 underestimate [͵ʌndɚˋɛstə͵met] v. 低估"],["estimate that + 子句 估計……"]],
+ ex:[["Kylie estimated that she would reach her grandmother's house in the early evening.","凱莉估計她會在傍晚時抵達她外婆家。"]]},
+{w:"estimate",ph:"[ˋɛstəmət]",pos:"n.",ch:"估計；估價",yr:"",
+ col:[["give sb. an estimate for sth. 給某人某事物的估價"],["a rough estimate 粗估"]],
+ ex:[["Bill asked the plumber to give him an estimate for the bathroom repair.","比爾要求水管工人給他修繕浴室的估價。"]]},
+{w:"formula",ph:"[ˋfɔrmjələ]",pos:"n.",ch:"配方、處方；公式、方程式",yr:"",
+ col:[["衍 formulate [ˋfɔrmjə͵let] 6 v. 制定……的配方；想出(計畫等)"],["衍 formulation [͵fɔrmjəˋleʃən] n. 規劃；構想"],["複數 formulas 或 formulae"]],
+ ex:[["I think the formula of the shampoo has changed because the new bottle smells different.","我想這個洗髮精的配方變了，因為新的一瓶聞起來不一樣。"],
+     ["To figure out this math problem, you have to know this formula.","為了要解出這道數學問題，你需要知道這個公式。"]]},
+{w:"gear",ph:"[ɡɪr]",pos:"n.",ch:"齒輪；設備、裝置(作此義時為不可數)",yr:"110",
+ col:[["同 equipment [ɪˋkwɪpmənt] 4 n. 設備；器材"],["補 fishing/rain gear 釣魚裝備／雨具"]],
+ ex:[["The gears in the machine are old and need to be replaced.","那台機器的齒輪太過老舊需要更換。"],
+     ["Louis packed his hunting gear for a weekend in the woods.","路易打包他的打獵裝備要去森林度過週末。"]]},
+{w:"gear",ph:"[ɡɪr]",pos:"v.",ch:"使適合；使準備好",yr:"",
+ col:[["be geared for/to sb. 適合某人"],["片 gear up 為……做準備"]],
+ ex:[["The swimming class is geared for young children, so it is not suitable for adults.","這堂游泳課適合年紀較小的幼童，所以並不適合成人。"],
+     ["Our company is gearing up for the trade show at the end of the summer.","我們公司正在準備夏末的商展。"]]},
+{w:"grateful",ph:"[ˋɡretfəl]",pos:"adj.",ch:"感謝的；感激的",yr:"",
+ col:[["be grateful for sth. 對某事感激"],["衍 ungrateful [ʌnˋɡretfəl] adj. 不知感謝的"],["衍 gratitude [ˋɡrætə͵tjud] n. 感謝"]],
+ ex:[["I'm very grateful for all the kind assistance they've given me.","我很感謝他們所有善意的協助。"]]},
+{w:"gratitude",ph:"[ˋɡrætə͵tjud]",pos:"n.",ch:"感謝，感激之情",yr:"105",
+ col:[["show/express one's gratitude 表達謝意"],["衍 grateful [ˋɡretfəl] adj. 感激的"]],
+ ex:[["To show your gratitude, you should send Doris a bouquet of flowers.","為了表示你的感謝，你應該送多莉絲一束花。"]]},
+{w:"guardian",ph:"[ˋɡɑrdɪən]",pos:"n.",ch:"守護者；監護人",yr:"",
+ col:[["衍 guard [ɡɑrd] 2 v. 保衛、守護；n. 守衛"],["補 guardian angel 守護天使；保護神"],["act as a guardian 擔任守護者"]],
+ ex:[["Jack got a dog to act as a guardian at night, so he could feel more secure.","傑克有隻晚上會看家的狗，所以他覺得比較安全。"],
+     ["After Sophie's parents died, her aunt became her guardian.","蘇菲父母過世後，她阿姨成為她的監護人。"]]},
+{w:"humidity",ph:"[hjuˋmɪdətɪ]",pos:"n.",ch:"溼氣；溼度",yr:"113",
+ col:[["衍 humid [ˋhjumɪd] 3 adj. 潮溼的"],["比較 humidity 指空氣中的水蒸氣含量，多用來描述空氣、大氣或天氣情況"]],
+ ex:[["The humidity made the warm day seem ten degrees hotter.","溼氣讓這暖日感覺像是多了十度般炎熱。"],
+     ["The humidity made it feel even hotter outside.","濕度使得外面感覺更熱了。"]]},
+{w:"moisture",ph:"[ˋmɔɪstʃɚ]",pos:"n.",ch:"水分；溼氣",yr:"",
+ col:[["比較 moisture 指固態物質或物品中含有的水分，使用情況較廣泛"],["wipe the moisture off sth. 把某物上的水氣擦掉"]],
+ ex:[["Mary wiped the moisture off her snorkeling goggles.","瑪莉把潛水鏡上的水氣擦掉。"]]},
+{w:"impact",ph:"[ˋɪmpækt]",pos:"n.",ch:"衝擊；影響",yr:"111-110-109",
+ col:[["補 have a(n) adj. impact on sb./sth. 對某人事物有……的影響"],["a negative/positive impact 負面／正面的影響"]],
+ ex:[["The government's new policy has had a negative impact on the middle class.","政府的新政策對中產階級有負面的影響。"]]},
+{w:"impact",ph:"[ɪmˋpækt]",pos:"v.",ch:"衝擊；對……造成影響",yr:"",
+ col:[["be impacted by sth. 受到某事衝擊"]],
+ ex:[["Many cities and towns were impacted by the severe storms in the United States last week.","上週美國的劇烈暴風雨影響了許多城鎮。"]]},
+{w:"injure",ph:"[ˋɪndʒɚ]",pos:"v.",ch:"傷害；損害、毀壞",yr:"113-112-111",
+ col:[["衍 injury [ˋɪndʒərɪ] 3 n. 受傷、傷害"],["比較 injure (尤指在事故中)受傷；亦指損害名聲、成就或自尊心"],["injure one's self-esteem 傷害某人的自尊"]],
+ ex:[["He fell down the stairs and injured himself.","他從樓梯上摔下來弄傷了自己。"],
+     ["Some people have tried to injure the politician's public image.","有些人一直設法要傷害那名政治人物的公眾形象。"],
+     ["The little boy was injured when he fell off his bike.","那個小男孩跌下單車時受傷了。"],
+     ["Don't say things that will injure others' self-esteem.","不要說那些會傷害他人自尊的話。"]]},
+{w:"wound",ph:"[wund]",pos:"v.",ch:"(常指因槍砲刀劍等而)使受傷",yr:"",
+ col:[["比較 wound 常指因槍砲刀劍等而受傷"],["be wounded in sth. 在某事件中受傷"]],
+ ex:[["Lots of people were wounded in that gun fight.","許多人在那場槍戰中受傷。"]]},
+{w:"wound",ph:"[wund]",pos:"n.",ch:"傷口；創傷",yr:"",
+ col:[["put a bandage on the wound 在傷口上紮繃帶"],["隱喻 emotional wounds 心理創傷"]],
+ ex:[["The nurse put a bandage on the wound to stop the bleeding.","護士在傷口上紮了繃帶以止血。"]]},
+{w:"insult",ph:"[ɪnˋsʌlt]",pos:"v.",ch:"侮辱",yr:"",
+ col:[["衍 insulting [ɪnˋsʌltɪŋ] adj. 侮辱的；無禮的"],["補 add insult to injury 雪上加霜"]],
+ ex:[["Don't insult people because you might hurt their feelings.","不要侮辱別人，因為你可能會傷害到他們的感受。"]]},
+{w:"insult",ph:"[ˋɪn͵sʌlt]",pos:"n.",ch:"侮辱；羞辱",yr:"",
+ col:[["It is an insult to + V／to sb. 對……是一種侮辱"],["補 add insult to injury 雪上加霜"]],
+ ex:[["The actress felt it was an insult to have to wait for a table at the restaurant.","那位演員認為必須在餐廳等候位子是一種侮辱。"],
+     ["Kim's boss gave her much more work to do, and to add insult to injury, he told her he was lowering her salary.","金的老闆大幅增加她的工作量，更糟的是，他還說要砍她的薪水。"]]},
+{w:"literary",ph:"[ˋlɪtə͵rɛrɪ]",pos:"adj.",ch:"文學的；文藝的",yr:"",
+ col:[["literary achievements 文學成就"],["衍 literacy [ˋlɪtərəsɪ] 6 n. 識字；讀寫能力"],["衍 literate [ˋlɪtərɪt] 6 adj. 有讀寫能力的"]],
+ ex:[["The poet was celebrated for her literary achievements.","這位詩人以她的文學成就聞名。"]]},
+{w:"literature",ph:"[ˋlɪtərətʃɚ]",pos:"n.",ch:"文學；文獻",yr:"104-103",
+ col:[["works of literature 文學作品"],["衍 literary [ˋlɪtə͵rɛrɪ] adj. 文學的"]],
+ ex:[["Julie studied many great works of literature for her degree course.","茱莉為了學位而研讀許多文學巨作。"]]},
+{w:"marathon",ph:"[ˋmærə͵θɑn]",pos:"n.",ch:"馬拉松；馬拉松式的活動",yr:"",
+ col:[["補 run (in) a marathon 參加馬拉松"],["complete the marathon 跑完馬拉松"],["隱喻 a marathon meeting 馬拉松式的會議"]],
+ ex:[["It is amazing that you completed the marathon in less than four hours.","你在四小時內跑完馬拉松真的是太驚人了。"]]},
+{w:"merchant",ph:"[ˋmɝtʃənt]",pos:"n.",ch:"商人",yr:"112",
+ col:[["衍 merchandise [ˋmɝtʃən͵daɪz] 6 n. 商品、貨品；v. 買賣、經營"],["比較 merchant 指參與大規模商品買賣的個人或實體，例如批發商或貿易商"],["a wine merchant 葡萄酒商"]],
+ ex:[["The merchant traveled to foreign markets to expand his business and establish international trade connections.","這位商人到外國市場拓展他的業務，建立國際貿易聯繫。"],
+     ["Philip is a wine merchant. He sells it in Hong Kong.","菲力普是一名葡萄酒商。他把葡萄酒銷往香港。"]]},
+{w:"dealer",ph:"[ˋdilɚ]",pos:"n.",ch:"經銷商；商人",yr:"",
+ col:[["比較 dealer 指從事商品零售或批發買賣的人，通常在特定的市場或行業"],["a used car dealer 二手車商"]],
+ ex:[["The used car dealer specializes in buying and selling second-hand cars from auto auctions.","這位二手車商專門從汽車拍賣中買賣二手車。"]]},
+{w:"trader",ph:"[ˋtredɚ]",pos:"n.",ch:"交易員；貿易商",yr:"",
+ col:[["比較 trader 指在金融市場上買賣股票、債券或金融工具的個人"],["a futures trader 期貨交易員"]],
+ ex:[["He is a futures trader, primarily dealing in agricultural futures contracts.","他是一名期貨貿易商，主要交易農產品期貨合約。"]]},
+{w:"mountainous",ph:"[ˋmaʊntənəs]",pos:"adj.",ch:"多山的；像山一般的",yr:"",
+ col:[["衍 mountain [ˋmaʊntn] 1 n. 山；山脈"],["補 mountainous area 山區"],["隱喻 a mountainous heap of paperwork 堆疊成山的文件"]],
+ ex:[["There are many ski areas in the mountainous regions of Europe.","在歐洲多山的區域有許多滑雪場地。"],
+     ["Don's desk had a mountainous heap of paperwork that needed to be handled.","唐恩的桌上有堆疊成山的文件需要處理。"]]},
+{w:"occupation",ph:"[͵ɑkjəˋpeʃən]",pos:"n.",ch:"佔領、占據；職業",yr:"108",
+ col:[["衍 occupational [͵ɑkjəˋpeʃənəl] adj. 職業上的"],["衍 occupier [ˋɑkjə͵paɪɚ] n. 占有者；占領者"],["the occupation of + 地點 對某地的佔領"]],
+ ex:[["The book was about the American occupation of Japan after World War II between 1945 and 1952.","這本書是有關於 1945 年至 1952 年二戰結束後美國對日本的佔領。"],
+     ["Yesterday, parents came to our school to talk about their different occupations, sharing insights about their jobs.","昨天家長們來我們學校談論他們的不同職業，並就自己的工作分享了一些見解。"]]},
+{w:"occupy",ph:"[ˋɑkjə͵paɪ]",pos:"v.",ch:"使用、占領(時間、空間)；擔任(職務)",yr:"110-109-108",
+ bform:"occupy(occupies) — occupied — occupied — occupying",
+ col:[["補 occupy(occupies)-occupied [ˋɑkjə͵paɪd] -occupied-occupying"],["occupy the office 擔任該職務"]],
+ ex:[["Lucy's toys occupy most of the shelves in her bedroom.","露西的玩具佔據了她臥室大部分的架子。"],
+     ["Ian is the fifth mayor to occupy the office.","伊恩是第五位任職的市長。"]]},
+{w:"orbit",ph:"[ˋɔrbɪt]",pos:"n.",ch:"(天體等的)運行軌道",yr:"",
+ col:[["衍 orbital [ˋɔrbɪtəl] adj. 軌道的"],["one orbit of the moon 月球繞行軌道一圈"]],
+ ex:[["One orbit of the moon takes about twenty-eight days.","月球繞行軌道一圈約需二十八天。"]]},
+{w:"orbit",ph:"[ˋɔrbɪt]",pos:"v.",ch:"環繞(天體等)的軌道運行",yr:"",
+ col:[["orbit the sun 繞著太陽運行"]],
+ ex:[["There are eight planets orbiting the sun.","有八個星球繞著太陽轉。"]]},
+{w:"participation",ph:"[pɑr͵tɪsəˋpeʃən]",pos:"n.",ch:"參加",yr:"109-103",
+ col:[["衍 participate [pɑrˋtɪsə͵pet] 2 v. 參與、參加"],["衍 participant [pɑrˋtɪsəpənt] 5 n. 參與者"],["without the participation of sb. 沒有某人的參與"]],
+ ex:[["Without the participation of her best friend, Mandy felt a little down at her birthday party.","曼蒂最好的朋友並未參加她的生日派對，使她感到有點失落。"]]},
+{w:"precise",ph:"[prɪˋsaɪs]",pos:"adj.",ch:"精確的；準確的",yr:"",
+ col:[["衍 precisely [prɪˋsaɪslɪ] adv. 恰恰；正好"],["衍 precision [prɪˋsɪʒən] 6 n. 精確；精準"],["補 to be precise 確切地說"]],
+ ex:[["The scientist used a special tool to make a precise measurement.","那位科學家使用特別的工具以進行準確的測量。"],
+     ["To be precise, the camp is 23.7 km from here.","精確地說，那個營地離這裡有二十三點七公里。"]]},
+{w:"prevention",ph:"[prɪˋvɛnʃən]",pos:"n.",ch:"預防；阻止",yr:"104",
+ col:[["衍 prevent [prɪˋvɛnt] 3 v. 預防；避免"],["衍 preventive [prɪˋvɛntɪv] 6 adj. 預防性的；n. 預防措施"],["補 Prevention is better than cure. 預防勝於治療。"]],
+ ex:[["The committee focuses on the prevention of violence against women rather than reacting to incidents after they occur.","該委員會著重於對女性暴力的預防，而不是在事情發生後做出反應。"]]},
+{w:"prompt",ph:"[prɑmpt]",pos:"adj.",ch:"立即的；準時的",yr:"109-106-103",
+ col:[["give a prompt response 立即回答"],["be prompt in V-ing 迅速地做……"]],
+ ex:[["Anyone who read the book should be able to give a prompt response to my question.","任何一個讀過這本書的人都能立即回答我的問題。"]]},
+{w:"prompt",ph:"[prɑmpt]",pos:"v.",ch:"促使；引起",yr:"",
+ col:[["prompt sb. to VR 促使某人做……"]],
+ ex:[["A rise in crime prompted the police chief to take action.","犯罪率的上升促使警察局長採取行動。"]]},
+{w:"prompt",ph:"[prɑmpt]",pos:"n.",ch:"(引導電腦執行任務或操作的)指令、提示",yr:"",
+ col:[["enter a prompt 輸入提示指令"]],
+ ex:[["Carla entered a prompt on her computer to start the program.","卡拉在她的電腦上輸入了一個提示來啟動程式。"]]},
+{w:"protein",ph:"[ˋprotiɪn]",pos:"n.",ch:"蛋白質",yr:"",
+ col:[["補 high-protein [ˋhaɪˋprotiɪn] adj. 高蛋白質的"],["a source of protein 蛋白質來源"]],
+ ex:[["Nuts and tofu are great sources of protein for people who don't eat meat.","堅果和豆腐對不吃肉的人來說是很好的蛋白質來源。"]]},
+{w:"realistic",ph:"[͵riəˋlɪstɪk]",pos:"adj.",ch:"實際的；寫實的、逼真的",yr:"113-109-105",
+ col:[["反 unrealistic [͵ʌnrɪˋlɪstɪk] adj. 不真實的；不切實際的"],["衍 realism [ˋriəlɪzəm] 5 n. 真實性；寫實主義"],["衍 reality [riˋælətɪ] 2 n. 現實；事實"]],
+ ex:[["You have to be realistic when you make goals for yourself.","在替自己訂定目標時，你需要實際一點。"],
+     ["The painting was so realistic that it looked like a photograph.","這幅畫作太逼真了，以致於看起來像照片。"]]},
+{w:"recipe",ph:"[ˋrɛsəpɪ]",pos:"n.",ch:"烹飪配方；食譜",yr:"112-107-104",
+ col:[["補 recipe book 食譜"],["片 a recipe for sth. 造成……的原因；很可能產生……結果"]],
+ ex:[["This restaurant also sells a book of the recipes it uses to make its food.","這家餐廳也販賣他們烹飪用的食譜。"],
+     ["Tension between the two families means the wedding is a recipe for disaster.","那兩個家庭之間的緊張氣氛意味著婚禮會成災難。"]]},
+{w:"reduction",ph:"[rɪˋdʌkʃən]",pos:"n.",ch:"減少；減少量",yr:"109",
+ col:[["衍 reduce [rɪˋdjus] 3 v. 減少"],["a reduction in + N 在……方面的減少"]],
+ ex:[["There was a small reduction in the number of students taking art this year.","今年修藝術課的學生人數微幅減少。"]]},
+{w:"revise",ph:"[rɪˋvaɪz]",pos:"v.",ch:"修改；校訂",yr:"113",
+ col:[["衍 revision [rɪˋvɪʒən] n. 修訂；修正"],["revise a book/plan 修改一本書／計畫"]],
+ ex:[["The author revised his book many times before he was satisfied.","那位作家多次修改他的書，直到滿意為止。"]]},
+{w:"revision",ph:"[rɪˋvɪʒən]",pos:"n.",ch:"修訂；修正",yr:"",
+ col:[["suggestions for revision 校正建議"]],
+ ex:[["The editor gave me some valuable suggestions for revision.","那位編輯給了我一些寶貴的校正建議。"]]},
+{w:"scenery",ph:"[ˋsinərɪ]",pos:"n.",ch:"風景；(劇院的)舞臺佈景",yr:"",
+ col:[["衍 scene [sin] 2 n. 景象"],["衍 scenic [ˋsinɪk] 6 adj. 風景優美的"],["比較 scenery (泛指某地的)整體自然景色；風景"]],
+ ex:[["Clarence sat by the window on the train and watched the scenery passing by.","克雷倫斯坐在火車窗邊欣賞沿途經過的美景。"],
+     ["The colored lights and realistic stage scenery added much to the concert.","彩色的燈光和逼真的舞臺佈景為音樂會增色不少。"],
+     ["The scenery of the mountains always takes my breath away.","山上的風景總是美麗到令我屏息。"]]},
+{w:"landscape",ph:"[ˋlænd͵skep]",pos:"n.",ch:"景象；景色",yr:"",
+ col:[["比較 landscape (從畫、照片中，或某人所在的位置所看到的)景象"],["be made up of 由……構成"]],
+ ex:[["The area's landscape is made up of green rice fields.","這個地區的景色是由綠油油的稻田構成。"]]},
+{w:"view",ph:"[vju]",pos:"n.",ch:"景物；視野",yr:"",
+ col:[["比較 view (強調由特定某處所能看到的)景物；視野"],["a view of + 地點 ……的景色"]],
+ ex:[["The beautiful view of the entire city can be seen from the window of our hotel room.","從我們的客房窗戶可以俯瞰整個城市的美麗景色。"]]},
+{w:"shift",ph:"[ʃɪft]",pos:"v.",ch:"轉移；改變",yr:"112",
+ col:[["shift from A to B 從 A 轉移到 B"]],
+ ex:[["The conversation shifted from what we did for work to what we did for fun.","對話從我們的工作轉移到我們的娛樂活動。"]]},
+{w:"shift",ph:"[ʃɪft]",pos:"n.",ch:"轉變；輪班",yr:"",
+ col:[["補 day/night shift 日班／夜班"],["補 early/late shift 早班／晚班"],["a shift in public opinion 民意的轉變"]],
+ ex:[["The political ideas expressed by the speaker have caused a shift in public opinion.","那位演講人表達的政治理念已造成民意的轉變。"],
+     ["Leo works the night shift at the convenience store.","里歐在便利商店上夜班。"]]},
+{w:"tendency",ph:"[ˋtɛndənsɪ]",pos:"n.",ch:"(行為、思想的)傾向；趨勢",yr:"108-104",
+ col:[["衍 tend [tɛnd] 3 v. 傾向；易於"],["補 have a tendency to VR＝tend to VR 有……的傾向"]],
+ ex:[["Travis has a tendency to talk a lot, so are you sure you want to ride in the car with him?","崔維斯有多話的傾向，所以你確定你要跟他一起坐車嗎？"]]},
+{w:"tragedy",ph:"[ˋtrædʒədɪ]",pos:"n.",ch:"悲劇；悲劇性事件",yr:"",
+ col:[["衍 tragic [ˋtrædʒɪk] adj. 悲劇的；悲慘的 (105)"],["end in tragedy 以悲劇收場"]],
+ ex:[["Will's holiday nearly ended in tragedy when his son almost drowned in the sea.","威爾的假期差點以悲劇收場，他的兒子幾乎在海裡溺斃。"],
+     ["Doris suffered no mental harm from the tragic event.","多莉絲並沒有在那次悲劇事件中受到任何心理上的傷害。"]]},
+{w:"tremble",ph:"[ˋtrɛmbəl]",pos:"v.",ch:"顫抖；搖晃",yr:"",
+ col:[["make sb.'s hands tremble 使某人雙手顫抖"],["tremble with fear/cold 因恐懼／寒冷而顫抖"]],
+ ex:[["The disease made the old man's hands tremble.","疾病使得那位老先生雙手顫抖。"],
+     ["The ground trembled only a little during the weak earthquake.","當這場微弱的地震發生時，地面只有輕微搖晃。"]]},
+{w:"tremble",ph:"[ˋtrɛmbəl]",pos:"n.",ch:"顫抖；搖晃",yr:"",
+ col:[["feel a tremble 感到一陣晃動"]],
+ ex:[["I felt a tremble as the train passed by.","當火車經過時我感到一陣晃動。"]]}
+];
+/* 歷屆高頻優先排序：有年度標記的字先出現 */
+const HOT=W.filter(x=>x.yr).sort((a,b)=>b.yr.split('-').length-a.yr.split('-').length);
+const COLD=W.filter(x=>!x.yr);
+const WORDS=HOT.concat(COLD);
+
+/* ================= 字源：字首／字根／字尾與語源（參酌 Merriam-Webster、Collins） ================= */
+const ETY={
+"aggressive":["拉丁文 aggressus ← aggredi ← ad-「朝向」＋ gradi「走、行進」← gradus「步伐」","字首 ag-(ad-)＝朝向　｜　字根 gress-／grad-＝走、步伐　｜　字尾 -ive＝具某性質的（形容詞）","同源字：progress 前進、congress 國會（走在一起）、gradual 逐漸的、degree 程度"],
+"aggression":["同 aggressive，拉丁文 aggredi「走向、進攻」","字首 ag-(ad-)＝朝向　｜　字根 gress-＝走　｜　字尾 -ion＝動作或狀態（名詞）","同源字：progression 進展、regression 退化、transgression 越界、ingredient 成分（走進去的東西）"],
+"agreeable":["古法文 agreable ← agreer ← 拉丁文 ad-「朝向」＋ gratus「令人愉快的、受歡迎的」","字首 a-(ad-)＝朝向　｜　字根 grat-＝令人愉快、感謝　｜　字尾 -able＝可……的（形容詞）","同源字：agree 同意、grateful 感激的、gratitude 謝意、grace 優雅、congratulate 祝賀"],
+"disagreeable":["字首 dis-（拉丁文 dis「相反、分離」）＋ agreeable ← gratus「令人愉快的」","字首 dis-＝否定、相反　｜　字根 grat-＝令人愉快　｜　字尾 -able＝可……的","同源字：disagree 不同意、dislike 不喜歡、disorder 失序、ingrate 不知感恩的人"],
+"aquarium":["拉丁文 aquarium「水槽、飲水處」← aqua「水」，仿 vivarium 造字","字根 aqua-＝水　｜　字尾 -arium＝與某事物有關的場所","同源字：aquatic 水生的、aqueduct 水道、西班牙文 agua 水、planetarium 天文館"],
+"broom":["古英文 brōm「金雀花」（日耳曼語源），因早期掃帚以此類灌木枝紮成而得名","字根 brom-／brōm-＝金雀花枝（器物名由材料而來）","同源字：bramble 荊棘、德文 Brombeere 黑莓（同源 brām 刺叢）"],
+"coarse":["中古英文 cors／course，原指「平常的、普通品質的」布料，後轉為「粗糙的」","字根 cors-＝普通、平常（與 course「常規進程」同形異義發展）","同源字：course 課程、路線（同一中古字形）、coarsen 使變粗糙"],
+"cushion":["古法文 coissin ←俗拉丁文 coxinum ←拉丁文 coxa「髖部、臀部」","字根 cox-／coiss-＝髖部（坐下時所墊之處）　｜　字尾 -ion＝名詞字尾","同源字：法文 coussin 坐墊、西班牙文 cojín 坐墊、coxal 髖骨的"],
+"dependent":["拉丁文 dependere ← de-「向下」＋ pendere「懸掛、垂吊」","字首 de-＝向下　｜　字根 pend-＝懸掛　｜　字尾 -ent＝具某性質的（形容詞／人）","同源字：depend 依賴、pendant 垂飾、suspend 暫停、pending 待決的、appendix 附錄"],
+"independent":["字首 in-「不」＋ dependent ←拉丁文 pendere「懸掛」","字首 in-＝不、非　｜　字首 de-＝向下　｜　字根 pend-＝懸掛　｜　字尾 -ent＝形容詞字尾","同源字：independence 獨立、indefinite 不確定的、compensate 補償（同根 pend 秤重）"],
+"distribute":["拉丁文 distributus ← distribuere ← dis-「分開、各處」＋ tribuere「分配、給予」← tribus「部族」","字首 dis-＝分開、散開　｜　字根 trib-＝分配、給予","同源字：contribute 貢獻、attribute 歸因於、tribute 貢品、tribe 部族"],
+"distribution":["同 distribute，拉丁文 distribuere「分開給予」","字首 dis-＝分開　｜　字根 trib-＝分配　｜　字尾 -ution＝動作或結果（名詞）","同源字：contribution 貢獻、retribution 報應、distributor 經銷商"],
+"estimate":["拉丁文 aestimatus ← aestimare「評價、估價」","字根 estim-／aestim-＝評價、定價　｜　字尾 -ate＝動詞／名詞字尾","同源字：esteem 尊重、estimation 評價、aim 瞄準（經古法文 esmer 同源）"],
+"formula":["拉丁文 formula「小形式、規則、公式」← forma「形狀、模型」的指小詞","字根 form-＝形狀、模型　｜　字尾 -ula＝指小字尾（小的形式）","同源字：form 形式、formal 正式的、reform 改革、uniform 制服、transform 轉變"],
+"gear":["中古英文 gere「裝備、服裝」←古北歐文 gervi「裝備、準備」","字根 gear-／ger-＝裝備、準備齊全","同源字：gearbox 變速箱、德文 gar 完全的、冰島文 gervi 裝備"],
+"grateful":["拉丁文 gratus「令人愉快的、感謝的」＋英文形容詞字尾 -ful「充滿……的」","字根 grat-＝感謝、令人愉快　｜　字尾 -ful＝充滿……的（形容詞）","同源字：gratitude 謝意、gratis 免費的、grace 恩典、agreeable 令人愉快的、西班牙文 gracias 謝謝"],
+"gratitude":["後期拉丁文 gratitudo ←拉丁文 gratus「感謝的、令人愉快的」","字根 grat-＝感謝　｜　字尾 -itude＝狀態、性質（名詞）","同源字：grateful 感激的、congratulate 祝賀、ingratitude 忘恩負義、attitude 態度（同為 -itude）"],
+"guardian":["古法文 guardein ←日耳曼語 wardon「看守、守望」（與 ward、warden 同源）","字根 guard-／ward-＝看守、守望　｜　字尾 -ian＝人（名詞）","同源字：guard 守衛、ward 看護、warden 管理員、award 授予、aware 察覺的"],
+"humidity":["拉丁文 humiditas ← humidus／umidus「潮溼的」← umere「潮溼」","字根 humid-／um-＝潮溼　｜　字尾 -ity＝性質、狀態（名詞）","同源字：humid 潮溼的、humidifier 加溼器、法文 humide 潮溼的"],
+"moisture":["古法文 moistour ←俗拉丁文 muscidus「發霉的、潮溼的」←拉丁文 mucidus ← mucus「黏液」","字根 moist-／muc-＝溼潤、黏液　｜　字尾 -ure＝狀態、結果（名詞）","同源字：moist 溼潤的、moisten 使溼潤、mucus 黏液、mold 霉"],
+"impact":["拉丁文 impactus ← impingere ← in-「朝裡、向上」＋ pangere「敲入、固定」","字首 im-(in-)＝朝向、進入　｜　字根 pact-＝敲擊、固定","同源字：compact 緊密的、pact 條約（敲定的約）、impinge 撞擊、impacted 緊塞的"],
+"injure":["拉丁文 injuria「不法、傷害」← in-「不」＋ jus／juris「法律、權利」","字首 in-＝不、非　｜　字根 jur-／jus-＝法律、權利","同源字：injury 傷害、justice 正義、jury 陪審團、perjure 作偽證、judge 判斷"],
+"wound":["古英文 wund「傷口」（日耳曼語源，與德文 Wunde 同源）","字根 wund-＝傷口、創傷","同源字：wounded 受傷的、德文 Wunde 傷口、荷蘭文 wond 傷口"],
+"insult":["拉丁文 insultare「跳到……身上、嘲弄」← in-「朝向」＋ saltare「跳」← salire「跳躍」","字首 in-＝朝向、對著　｜　字根 sult-／sal-＝跳躍","同源字：assault 攻擊、result 結果（跳回來）、somersault 翻筋斗、salmon 鮭魚（會跳的魚）"],
+"literary":["拉丁文 litterarius ← littera「字母、文字」","字根 liter-＝字母、文字　｜　字尾 -ary＝與……有關的（形容詞）","同源字：literature 文學、literal 字面的、literacy 讀寫能力、obliterate 抹去（去掉文字）"],
+"literature":["拉丁文 litteratura「書寫、文法知識」← littera「字母、文字」","字根 liter-＝文字　｜　字尾 -ature＝結果、集合（名詞）","同源字：literary 文學的、illiterate 不識字的、letter 信（同源 littera）"],
+"marathon":["希臘地名 Marathon（馬拉松平原）；傳說信使由此奔回雅典報捷，1896 年首屆奧運以此命名長跑","字根 marathon-＝馬拉松（源自希臘地名，字面意為「長著茴香的地方」）","同源字：半程 half marathon、衍生字尾 -athon（telethon 馬拉松式募款節目、walkathon 健行募款）"],
+"merchant":["古法文 marchant ←俗拉丁文 mercatans ←拉丁文 mercari「買賣」← merx／mercis「商品」","字根 merc-＝商品、買賣　｜　字尾 -ant＝做某事的人（名詞）","同源字：merchandise 商品、commerce 商業、market 市場、mercy 仁慈（原指報酬、恩惠）、西班牙文 mercado 市場"],
+"dealer":["古英文 dǣlan「分配、分享」← dǣl「部分」（日耳曼語源）","字根 deal-＝分配、分發　｜　字尾 -er＝做某事的人（名詞）","同源字：deal 交易、dole 配給、德文 teilen 分配、Teil 部分"],
+"trader":["中古低地德文 trade「軌跡、路線」（日耳曼語源，與 tread 踩踏同源）","字根 trad-／tread-＝踩踏出的路徑（商旅往來之路引申為貿易）　｜　字尾 -er＝人","同源字：trade 貿易、tread 踩、trademark 商標、德文 Tritt 腳步"],
+"mountainous":["古法文 montaigne ←俗拉丁文 montanea ←拉丁文 mons／montis「山」","字根 mont-／mount-＝山　｜　字尾 -ous＝多……的、充滿……的（形容詞）","同源字：mountain 山、mount 登上、amount 總計、paramount 至高的、西班牙文 montaña 山"],
+"occupation":["拉丁文 occupatio ← occupare ← ob-「朝向、覆蓋」＋ capere「拿取、抓住」","字首 oc-(ob-)＝朝向、完全　｜　字根 cup-／cap-＝拿取　｜　字尾 -ation＝動作或結果（名詞）","同源字：occupy 佔據、capture 捕捉、capable 有能力的、accept 接受、receive 接收"],
+"occupy":["古法文 occuper ←拉丁文 occupare ← ob-「朝向」＋ capere「拿取」","字首 oc-(ob-)＝朝向　｜　字根 cup-／cap-＝拿取、握住","同源字：occupation 職業、occupant 佔用者、participate 參與（取得一部分）、anticipate 預期"],
+"orbit":["拉丁文 orbita「車輪壓出的軌跡」← orbis「圓、圓環、天體」","字根 orb-＝圓、環　｜　字尾 -it＝名詞字尾","同源字：orb 球體、orbital 軌道的、exorbitant 過高的（脫出軌道的）"],
+"participation":["拉丁文 participatio ← participare ← pars／partis「部分」＋ capere「拿取」","字根 part-＝部分　｜　字根 cip-／cap-＝拿取　｜　字尾 -ation＝動作（名詞）","同源字：participate 參加、participant 參與者、party 一方、partial 部分的、anticipate 預期"],
+"precise":["拉丁文 praecisus ← praecidere ← prae-「在前」＋ caedere「切」","字首 pre-＝在前　｜　字根 cis-／cid-＝切、割","同源字：precision 精準、concise 簡潔的、decide 決定（切斷疑慮）、scissors 剪刀、incision 切口"],
+"prevention":["後期拉丁文 praeventio ←拉丁文 praevenire ← prae-「在前」＋ venire「來」","字首 pre-＝在前、預先　｜　字根 vent-／ven-＝來　｜　字尾 -ion＝動作（名詞）","同源字：prevent 預防、event 事件、invent 發明（來到心中）、convene 召集、avenue 大道"],
+"prompt":["拉丁文 promptus ← promere ← pro-「向前」＋ emere「取得、拿」","字首 pro-＝向前　｜　字根 empt-／em-＝取得（隨手可取→立即的）","同源字：prompter 提詞人、exempt 免除的、redeem 贖回、example 例子（同源 emere）"],
+"protein":["法文 protéine ←希臘文 proteios「首要的、第一位的」← protos「第一」","字根 prot-＝第一、首要（蛋白質被視為生命最首要的物質）　｜　字尾 -in／-ine＝化學物質（名詞）","同源字：prototype 原型、protagonist 主角、protocol 規約、proton 質子"],
+"realistic":["拉丁文 realis ← res「事物、實物」，經法文 réaliste 進入英文","字根 real-／re-＝事物、實際　｜　字尾 -istic＝具某主義或性質的（形容詞）","同源字：reality 現實、realism 寫實主義、republic 共和國（res publica 公共之事）"],
+"recipe":["拉丁文 recipe「取用吧！」（recipere 的命令式）← re-「回來」＋ capere「拿取」；原為醫師處方開頭用語","字首 re-＝回來、再　｜　字根 cip-／cap-＝拿取","同源字：receive 接收、receipt 收據、recipient 接受者、capture 捕捉"],
+"reduction":["拉丁文 reductio ← reducere ← re-「向後」＋ ducere「引導、帶領」","字首 re-＝向後、回　｜　字根 duct-／duc-＝引導　｜　字尾 -ion＝動作（名詞）","同源字：reduce 減少、conduct 引導、introduce 介紹、produce 生產、educate 教育"],
+"revise":["拉丁文 revisere「再看、回頭查看」← re-「再」＋ visere／videre「看」","字首 re-＝再、重新　｜　字根 vis-／vid-＝看","同源字：revision 修訂、vision 視覺、visible 看得見的、supervise 監督、evident 明顯的"],
+"revision":["同 revise，拉丁文 revidere／revisere「再看一次」","字首 re-＝再　｜　字根 vis-＝看　｜　字尾 -ion＝動作或結果（名詞）","同源字：division 分割、provision 供給、television 電視（遠處所見）"],
+"scenery":["義大利文 scena ←拉丁文 scaena ←希臘文 skene「舞臺、帳棚」","字根 scen-＝舞臺、場景　｜　字尾 -ery＝集合、總體（名詞）","同源字：scene 景象、scenic 風景優美的、proscenium 舞臺前部"],
+"landscape":["荷蘭文 landschap ← land「土地」＋ -schap「狀態、形貌」（即英文的 -ship）","字根 land-＝土地　｜　字尾 -scape(-ship)＝景觀、狀態（名詞）","同源字：seascape 海景、cityscape 城市景觀、friendship 友誼、德文 Landschaft 風景"],
+"view":["古法文 veue ← veoir ←拉丁文 videre「看」","字根 vi-／vid-＝看","同源字：review 回顧、interview 面談、preview 預覽、evident 明顯的、video 影像"],
+"shift":["古英文 sciftan「分配、安排、整理」（日耳曼語源）","字根 shift-／scift-＝分派、調動（由「分配工作」引申為「輪班」）","同源字：shifty 閃爍其詞的、makeshift 權宜的、德文 schichten 分層、Schicht 班次"],
+"tendency":["中世紀拉丁文 tendentia ←拉丁文 tendere「伸展、朝向」","字根 tend-＝伸展、朝向　｜　字尾 -ency＝性質、狀態（名詞）","同源字：tend 傾向、extend 延伸、intend 打算、attend 參加、tension 緊張"],
+"tragedy":["希臘文 tragoidia ← tragos「山羊」＋ oide「歌」（原指祭神歌舞），經拉丁文 tragoedia 進入英文","字根 trag-＝山羊　｜　字根 -ody／oide＝歌　｜　字尾 -y＝名詞字尾","同源字：tragic 悲劇的、comedy 喜劇、melody 旋律、ode 頌詩、parody 戲仿"],
+"tremble":["古法文 trembler ←俗拉丁文 tremulare ←拉丁文 tremulus「顫抖的」← tremere「發抖」","字根 trem-＝顫抖　｜　字尾 -ble(-ulare)＝反覆動作（動詞）","同源字：tremor 震顫、tremendous 驚人的（令人發抖的）、tremulous 顫抖的、西班牙文 temblor 地震"]
+};
+
+/* ================= 動詞變化：原形—過去式—過去分詞—現在分詞 ================= */
+const VFORM={
+"cushion":"cushion(s) — cushioned — cushioned — cushioning",
+"distribute":"distribute(s) — distributed — distributed — distributing",
+"estimate":"estimate(s) — estimated — estimated — estimating",
+"gear":"gear(s) — geared — geared — gearing",
+"impact":"impact(s) — impacted — impacted — impacting",
+"injure":"injure(s) — injured — injured — injuring",
+"wound":"wound(s) — wounded — wounded — wounding（規則變化，勿與 wind–wound 繞的過去式混淆）",
+"insult":"insult(s) — insulted — insulted — insulting",
+"occupy":"occupy(occupies) — occupied — occupied — occupying（字尾 y 前為子音，變 i 加 -ed）",
+"orbit":"orbit(s) — orbited — orbited — orbiting",
+"prompt":"prompt(s) — prompted — prompted — prompting",
+"revise":"revise(s) — revised — revised — revising",
+"shift":"shift(s) — shifted — shifted — shifting",
+"tremble":"tremble(s) — trembled — trembled — trembling",
+"agree":"agree(s) — agreed — agreed — agreeing",
+"depend":"depend(s) — depended — depended — depending",
+"participate":"participate(s) — participated — participated — participating",
+"prevent":"prevent(s) — prevented — prevented — preventing",
+"reduce":"reduce(s) — reduced — reduced — reducing",
+"tend":"tend(s) — tended — tended — tending",
+"guard":"guard(s) — guarded — guarded — guarding",
+"formulate":"formulate(s) — formulated — formulated — formulating"
+};
+
+/* ================= 分頁 ================= */
+const TABS=["🃏 閃卡初識","✍️ 鋸子英文15級分","💡 聽！我多準","💡 字彙對對碰","💯 學測選擇題",
+"🐘📌 文意選填戰站讚","📐 句子優化ing","🎲 大富翁闖關","🏆 查看累計總分"];
+const mg=document.getElementById('mgrid');
+TABS.forEach((t,i)=>{const b=document.createElement('button');b.className='tabb';b.textContent=t;
+  b.onclick=()=>{go(i);closeMenu()};mg.appendChild(b)});
+const extra=document.createElement('button');extra.className='tabb';extra.textContent='🏆 顯示／隱藏計分列';
+extra.onclick=()=>{const s=document.getElementById('scorebar');s.style.display=s.style.display==='none'?'block':'none';closeMenu()};
+mg.appendChild(extra);
+function go(i){document.querySelectorAll('.pane').forEach((p,k)=>p.classList.toggle('on',k===i));
+  document.querySelectorAll('.tabb').forEach((b,k)=>b.classList.toggle('act',k===i));
+  scrollTo({top:0,behavior:'smooth'});}
+function closeMenu(){document.getElementById('menu').classList.remove('open');
+  document.getElementById('mtoggle').textContent='☰ 選單'}
+document.getElementById('mtoggle').onclick=e=>{e.stopPropagation();
+  const m=document.getElementById('menu');m.classList.toggle('open');
+  document.getElementById('mtoggle').textContent=m.classList.contains('open')?'✕ 關閉':'☰ 選單'};
+document.addEventListener('click',e=>{if(!document.getElementById('menu').contains(e.target))closeMenu()});
+addEventListener('scroll',()=>{if(scrollY>150)closeMenu()});
+
+/* ================= 1 單字閃卡（正面含字源） ================= */
+let wi=0;
+function drawWord(){
+  const d=WORDS[wi];
+  document.getElementById('fcF').innerHTML=
+   '<div class="sp"><span class="pill">'+d.pos+'</span><span class="pill">'+(wi+1)+' / '+WORDS.length+'</span></div>'+
+   '<div class="bigw">'+d.w+'</div><div class="ph">'+d.ph+'</div>'+
+   (/^v\./.test(d.pos)&&VFORM[d.w]?'<div class="col" style="margin-top:8px;text-align:left"><b>🔁 三態與現在分詞</b><div>'+VFORM[d.w]+'</div></div>':'')+
+   (d.yr?'<div class="pill" style="background:var(--peach);margin-top:6px">學測年度 '+d.yr.split('-').join('、')+'</div>':'')+
+   '<div style="margin-top:12px"><button class="spk" onclick="event.stopPropagation();speak(\''+d.w+'\')">🔊 聽發音</button></div>'+
+   (ETY[d.w]?'<div class="col" style="margin-top:14px;text-align:left">'+
+     '<b>🏛️ 字源 Etymology</b>'+
+     ETY[d.w].map(function(line,k){return '<div style="margin-top:4px">'+['📜','🧩','🔗'][k]+' '+line+'</div>'}).join('')+
+   '</div>':'')+
+   '<p class="sub" style="margin-top:12px">💡 點擊卡片翻看中文意思與例句</p>';
+  document.getElementById('fcB').innerHTML=
+   '<div class="sp"><span class="pill">'+d.pos+' '+d.ch+'</span>'+
+   '<button class="spk" onclick="event.stopPropagation();speak(\''+d.w+'\')">🔊</button></div>'+
+   '<div style="font-size:22px;font-weight:900;margin:8px 0">'+d.w+'</div>'+
+   (/^v\./.test(d.pos)&&(d.bform||VFORM[d.w])?'<div class="col">🔁 三態與現在分詞：'+(d.bform||VFORM[d.w])+'</div>':'')+
+   d.col.map(c=>'<div class="col">🧩 '+c[0]+'</div>').join('')+
+   '<div style="margin-top:8px">'+d.ex.map(e=>'<div class="ex"><div class="en">'+e[0]+
+     ' <button class="spk" onclick="event.stopPropagation();speak(\''+e[0].replace(/'/g,"\\'")+'\')">🔊</button></div>'+
+     '<div class="zh">'+e[1]+'</div></div>').join('')+'</div>';
+  document.getElementById('fc').classList.remove('f');
+}
+function flipCard(){document.getElementById('fc').classList.toggle('f')}
+document.getElementById('fc').onclick=flipCard;
+function wcard(n){wi=(wi+n+WORDS.length)%WORDS.length;drawWord()}
+drawWord();
+
+/* ================= 2 例句閃卡 ================= */
+let SENTS=[];WORDS.forEach(d=>d.ex.forEach(e=>SENTS.push({en:e[0],zh:e[1],w:d.w,pos:d.pos,ch:d.ch})));
+let si=0;
+function drawSent(){
+  const s=SENTS[si];
+  document.getElementById('scF').innerHTML=
+   '<div class="sp"><span class="pill">例句 '+(si+1)+' / '+SENTS.length+'</span>'+
+   '<button class="spk" onclick="event.stopPropagation();speak(\''+s.en.replace(/'/g,"\\'")+'\')">🔊 朗讀</button></div>'+
+   '<div style="font-size:19px;font-weight:700;margin:14px 0">'+s.en+'</div>'+
+   '<div class="sub">'+s.zh+'</div>'+
+   '<p class="sub" style="margin-top:16px">💡 點擊卡片揭曉這句的核心單字與詞性</p>';
+  document.getElementById('scB').innerHTML=
+   '<div class="sp"><span class="pill">'+s.pos+'</span>'+
+   '<button class="spk" onclick="event.stopPropagation();speak(\''+s.w+'\')">🔊 聽單字</button></div>'+
+   '<div class="bigw">'+s.w+'</div>'+
+   '<div class="col">🧩 '+s.ch+'</div>'+
+   (/^v\./.test(s.pos)&&VFORM[s.w]?'<div class="col">🔁 三態與現在分詞：'+VFORM[s.w]+'</div>':'')+
+   '<div class="ex"><div class="en">'+s.en+'</div><div class="zh">'+s.zh+'</div></div>';
+  document.getElementById('sc').classList.remove('f');
+}
+function flipSent(){document.getElementById('sc').classList.toggle('f')}
+document.getElementById('sc').onclick=flipSent;
+function scard(n){si=(si+n+SENTS.length)%SENTS.length;drawSent();logSent()}
+function logSent(){const s=SENTS[si];if(typeof LOG==='undefined')return;
+  if(!LOG.sent.some(x=>x.en===s.en))logPush('sent',{en:s.en,zh:s.zh,w:s.w,pos:s.pos,ch:s.ch});}
+function shuffleSent(){SENTS=shuffle(SENTS);si=0;drawSent();toast('已打散例句順序')}
+drawSent();
+
+/* ================= 3 聽力填空 ================= */
+const LIT=[];
+SENTS.forEach(s=>{
+  const stem=s.w.replace(/e$/,'');
+  const m=s.en.match(new RegExp('\\b'+esc(stem)+'\\w*','i'));
+  if(m&&m[0].length>3)LIT.push({en:s.en,zh:s.zh,ans:m[0],idx:m.index});
+});
+let lr=0;
+let LPOOL=[];
+function newListen(){
+  const pool=shuffle(LIT).slice(0,5);lr++;LPOOL=pool;
+  document.getElementById('lrd').textContent=lr;
+  document.getElementById('lbox').innerHTML=pool.map((q,i)=>{
+    const a=q.ans,hint=a[0]+'_'.repeat(Math.max(a.length-2,1))+a[a.length-1]+'（'+a.length+' 字母）';
+    const sent=q.en.slice(0,q.idx)+'______'+q.en.slice(q.idx+a.length);
+    return '<div class="card"><div class="sp"><span class="pill">Q'+(i+1)+'</span>'+
+    '<button class="spk" onclick="speak(\''+q.en.replace(/'/g,"\\'")+'\')">🔊 播放句子</button></div>'+
+    '<div style="margin:8px 0;font-weight:600">'+sent+'</div>'+
+    '<div class="sub">提示：'+hint+'</div>'+
+    '<input type="text" id="li'+i+'" placeholder="Type the missing word">'+
+    '<div class="row" style="margin-top:8px"><button class="btn g" onclick="ckListen('+i+',\''+a+'\')">✅ 檢查</button>'+
+    '<button class="btn p" onclick="document.getElementById(\'la'+i+'\').classList.toggle(\'show\')">📖 參考解答</button></div>'+
+    '<div class="ans" id="la'+i+'"><b>答案：'+a+'</b> '+
+    '<button class="spk" onclick="speak(\''+a.replace(/'/g,"\\'")+'\')">🔊</button><br>'+
+    q.en+' <button class="spk" onclick="speak(\''+q.en.replace(/'/g,"\\'")+'\')">🔊</button><br>'+q.zh+'</div>'+
+    '<div id="lf'+i+'" style="font-weight:800;margin-top:6px"></div></div>';
+  }).join('');
+}
+function ckListen(i,a){
+  const v=document.getElementById('li'+i).value.trim();
+  const f=document.getElementById('lf'+i);
+  if(typeof LOG!=='undefined'){const q=LPOOL[i];
+    logPush('listen',{sent:q?(q.en.slice(0,q.idx)+'______'+q.en.slice(q.idx+a.length)):'',
+      ans:v,key:a,ok:v.toLowerCase()===a.toLowerCase()});}
+  if(v.toLowerCase()===a.toLowerCase()){f.textContent='🎉 完全正確！';f.style.color='var(--ok)';fire();addScore(100)}
+  else{f.textContent='再聽一次，可以無限重試 💪';f.style.color='var(--bad)';addWrong(a)}
+}
+
+/* ================= 4 字彙對對碰 ================= */
+const CATS=[["verb","動詞"],["noun","名詞"],["adj","形容詞"],["adv","副詞"],["pattern","搭配詞與句型"]];
+const MPOOL={verb:[],noun:[],adj:[],adv:[],pattern:[]};
+const POSZH={'n.':'名詞','v.':'動詞','adj.':'形容詞','adv.':'副詞','prep.':'介系詞','conj.':'連接詞'};
+const PREPS=['in','on','at','of','for','with','to','from','by','into','among','between','about','against','over','up','off','out','as'];
+const VERBS=['distribute','estimate','cushion','gear','impact','injure','wound','insult','occupy','orbit','prompt','revise','shift','tremble','agree','depend','participate','prevent','reduce','tend','guard','formulate','show','make','give','take','have','be','get','keep','put','need','seem','act','pack','use','sweep','wipe','express','focus','handle','cause','reach','send'];
+/* 解析搭配詞字串 → 拆出英文、中譯與詞性類型 */
+function colParse(t,d){
+  if(/^[\u4e00-\u9fff]/.test(t))return null;                 /* 純中文註記不出題 */
+  const clean=t.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim();
+  let m=clean.match(/^([A-Za-z][A-Za-z\-\/'. ]*?)\s*\((n|v|adj|adv|prep|conj)\.\s*([^)]*)\)$/);
+  if(m){const pos=m[2]+'.';
+    return {en:m[1].trim(),zh:m[3].trim(),pos:pos,posZh:POSZH[pos]||'',kind:'derived'};}
+  m=clean.match(/^([A-Za-z][^\u4e00-\u9fff]*?)\s*\(([\u4e00-\u9fff][^)]*)\)$/);
+  if(m){const tag=m[2].trim();let zh=d.ch,pos=d.pos;
+    if(/三態/.test(tag)){zh='三態變化：原形－過去式－過去分詞';pos='v.'}
+    else if(/同義/.test(tag)){zh=d.ch}
+    else zh=tag;
+    return {en:m[1].trim(),zh:zh,pos:pos,posZh:POSZH[pos]||'',kind:'form'};}
+  m=clean.match(/^([A-Za-z][^\u4e00-\u9fff]*?)\s*([\u4e00-\u9fff].*)$/);
+  if(!m)return null;
+  const raw=m[1].trim();
+  const toks=raw.toLowerCase().replace(/\.\.\.$/,'').split(/\s+/).filter(Boolean);
+  const first=(toks[0]||'').replace(/\/.*$/,''),last=(toks[toks.length-1]||'');
+  let type;
+  if(first==='be')type='被動／狀態結構（be + p.p.）';
+  else if(VERBS.indexOf(first)>=0)type='動詞片語（V + ...）';
+  else if(['a','an','the'].indexOf(first)>=0)type='名詞片語（det. + adj./N + N）';
+  else if(PREPS.indexOf(first)>=0)type='介系詞片語（prep. + N）';
+  else if(/^(one's|sb\.'s|his|her|their)$/.test(first))type='名詞片語（所有格 + N + prep.）';
+  else if(/-/.test(raw)&&toks.length===1)type='動詞三態／複合字';
+  else type='複合名詞／名詞片語（N + N 或 adj. + N）';
+  return {en:raw,zh:m[2].trim(),pos:'phr.',posZh:type,kind:'phrase'};
+}
+WORDS.forEach(d=>{
+  const key=/^v\./.test(d.pos)?'verb':/^n\./.test(d.pos)?'noun':/^adj\./.test(d.pos)?'adj':/^adv\./.test(d.pos)?'adv':'noun';
+  MPOOL[key].push({en:d.w,zh:d.ch,pos:d.pos,posZh:POSZH[d.pos]||'詞類',kind:'word',sent:(d.ex[0]?d.ex[0][0]:'')});
+  d.col.forEach(c=>{
+    const o=colParse(c[0],d);if(!o)return;
+    const kw=o.en.split(/\s+/).filter(w=>/^[a-z]+$/i.test(w)&&w.length>3);
+    let hit='';d.ex.forEach(e=>{if(!hit&&kw.length&&kw.some(k=>new RegExp(esc(k),'i').test(e[0])))hit=e[0]});
+    if(!hit&&d.ex[0])hit=d.ex[0][0];
+    o.sent=hit;MPOOL.pattern.push(o);
+  });
+});
+MPOOL.adv=[
+{en:"precisely",zh:"恰恰；精確地",pos:"adv.",posZh:"副詞",sent:"To be precise, the camp is 23.7 km from here."},
+{en:"promptly",zh:"立刻；準時地",pos:"adv.",posZh:"副詞",sent:"The police chief promptly took action after a rise in crime."},
+{en:"aggressively",zh:"積極地；強勢地",pos:"adv.",posZh:"副詞",sent:"The banker aggressively tried to persuade me to open an account."},
+{en:"gratefully",zh:"感激地",pos:"adv.",posZh:"副詞",sent:"I gratefully accepted all the kind assistance they offered me."},
+{en:"realistically",zh:"實際地",pos:"adv.",posZh:"副詞",sent:"You should realistically consider your own schedule before setting goals."},
+{en:"completely",zh:"完全地",pos:"adv.",posZh:"副詞",sent:"The baker's shop was completely dependent on one old oven."},
+{en:"financially",zh:"在經濟上",pos:"adv.",posZh:"副詞",sent:"After getting her first job, Sandy became financially independent of her family."},
+{en:"nearly",zh:"幾乎；差點",pos:"adv.",posZh:"副詞",sent:"Will\'s holiday nearly ended in tragedy when his son almost drowned in the sea."}];
+let curCat='verb',mItems=[],mSel=null;
+CATS.forEach(c=>{const b=document.createElement('button');b.className='btn';b.textContent=c[1];
+  b.onclick=()=>{curCat=c[0];buildMatch()};document.getElementById('catrow').appendChild(b)});
+function buildMatch(){
+  mSel=null;document.getElementById('mres').classList.remove('show');
+  mItems=shuffle(MPOOL[curCat]).slice(0,8);
+  const bank=shuffle(mItems.map(x=>x.en));
+  document.getElementById('wbank').innerHTML=bank.map(t=>
+    '<button class="tok" data-t="'+t+'" onclick="pickTok(this)">'+t+'</button>').join('');
+  document.getElementById('mbox').innerHTML=mItems.map((x,i)=>
+    '<div class="card"><div class="sp"><span class="pill">Q'+(i+1)+'</span>'+
+    '<button class="spk" onclick="speak(\''+x.en.replace(/'/g,"\\'")+'\')">🔊 單字</button>'+
+    (x.sent?'<button class="spk" onclick="speak(\''+x.sent.replace(/'/g,"\\'")+'\')">🔊 例句</button>':'')+'</div>'+
+    '<div style="margin:6px 0">提示用中譯：<b>'+x.zh+'</b></div>'+
+    (x.posZh?'<div class="col">📎 詞性：<b>'+x.posZh+(x.pos&&x.pos!=='phr.'?'（'+x.pos+'）':'')+'</b></div>':'')+
+    '<span class="blank" id="mb'+i+'" data-a="'+x.en+'" onclick="dropTok('+i+')">　　？　　</span></div>').join('');
+}
+function pickTok(b){document.querySelectorAll('#wbank .tok').forEach(t=>t.classList.remove('sel'));
+  b.classList.add('sel');mSel=b}
+function dropTok(i){
+  const bl=document.getElementById('mb'+i);
+  if(bl.dataset.filled){const t=document.querySelector('#wbank .tok[data-t="'+bl.dataset.filled+'"]');
+    if(t)t.classList.remove('used');bl.dataset.filled='';bl.textContent='　　？　　';bl.classList.remove('ok');return;}
+  if(!mSel){toast('請先點 Word Bank 選一個字');return;}
+  bl.dataset.filled=mSel.dataset.t;bl.textContent=mSel.dataset.t;mSel.classList.add('used');
+  mSel.classList.remove('sel');mSel=null;
+}
+function checkMatch(){
+  let ok=0,rep='';
+  if(typeof LOG!=='undefined'){const cz2=(CATS.find(c=>c[0]===curCat)||['',''])[1];
+    mItems.forEach((x,i)=>{const bl=document.getElementById('mb'+i);const v=bl.dataset.filled||'';
+      logPush('match',{cat:cz2,zh:x.zh,ans:v,key:x.en,ok:v===x.en});});}
+  mItems.forEach((x,i)=>{const bl=document.getElementById('mb'+i);
+    const v=bl.dataset.filled||'';
+    if(v===x.en){ok++;bl.classList.add('ok')}else{addWrong(x.en);
+      rep+='<div class="ex"><div class="en">Q'+(i+1)+' → '+x.en+'</div><div class="zh">'+x.zh+'</div></div>'}});
+  const r=document.getElementById('mres');r.classList.add('show');
+  r.innerHTML='<b>答對 '+ok+' / '+mItems.length+'</b>'+(rep?('<div style="margin-top:6px"><b>📖 參考解答：</b>'+rep+'</div>'):'　全對！🎉');
+  if(ok===mItems.length){fire();addScore(300)}else addScore(ok*50);
+}
+buildMatch();
+
+/* ================= 5 學測選擇題 ================= */
+const MCQ=[
+["The dog gets a little ______ at times, so you need to be careful when you are around it.",["agreeable","aggressive","grateful","precise"],1,"(B) aggressive","主要訊息：這隻狗有時會有攻擊性，所以要小心。語言結構：get 為連綴動詞，後接形容詞；so 引導結果子句。構詞：ag-(ad-)＝朝向＋gress-＝走，「走向對方」即攻擊。一字多義：aggressive 亦可褒義指「積極進取的」（an aggressive salesperson）。名詞為 aggression。"],
+["I suggested that we leave at eight, and he seemed ______ without expressing any objections.",["disagreeable","mountainous","agreeable","coarse"],2,"(C) agreeable","主要訊息：他似乎欣然同意。次要訊息：without expressing any objections 補充「沒有提出異議」，正是 agreeable 的具體行為。語言結構：suggest 之後的 that 子句用原形動詞（should 可省略）。反義字 disagreeable 令人不愉快的。"],
+["A mattress ______ David's fall off the ladder, so he didn't sustain any serious injuries.",["cushioned","injured","insulted","occupied"],0,"(A) cushioned","主要訊息：床墊減緩了跌落的衝擊。一字多義：cushion 當名詞是「坐墊」，當動詞由「加墊子」引申為「緩和衝擊」，片語 cushion the blow 則進一步隱喻為「緩解打擊」。細節與邏輯：so 子句以「沒有受重傷」反證緩衝有效。"],
+["Although Rick is an adult, he is still ______ on his parents for many things.",["independent","dependent","realistic","literary"],1,"(B) dependent","主要訊息：瑞克雖成年仍依賴父母。語言結構：Although 引導讓步子句，前後語意相反；be dependent on sb. for sth.＝在某方面依賴某人。構詞：de-＝向下＋pend-＝懸掛，「吊在別人身上」即依賴。一字多義：dependent 當名詞指「受撫養親屬」。"],
+["The teacher ______ books to the students at the beginning of the school year.",["estimated","revised","distributed","trembled"],2,"(C) distributed","主要訊息：老師把書分發給學生。語言結構：distribute sth. to sb.＝把某物分給某人，to 不可換成 for。構詞：dis-＝分開＋trib-＝分配，同源字 contribute、tribute。名詞 distribution（分配、分布），人 distributor（經銷商）。"],
+["Kylie ______ that she would reach her grandmother's house in the early evening.",["estimated","impacted","geared","wounded"],0,"(A) estimated","主要訊息：凱莉估計傍晚會抵達外婆家。語言結構：estimate that + 子句，主句過去式故子句用 would（時態一致）。一字多義：estimate 當動詞重音在後尾音 [met]，當名詞唸 [ˋɛstəmət] 指「估價」。補充：over-／underestimate 高估／低估。"],
+["Louis packed his hunting ______ for a weekend in the woods.",["gears","gear","formula","broom"],1,"(B) gear","主要訊息：路易打包打獵裝備。語言結構與細節：gear 作「設備、裝備」時為不可數名詞，故不加 -s；作「齒輪」時才可數（the gears in the machine）。同義字 equipment 亦不可數。一字多義：gear 當動詞為「使適合」，片語 gear up 表「做準備」。"],
+["To show your ______, you should send Doris a bouquet of flowers.",["gratitude","guardian","humidity","reduction"],0,"(A) gratitude","主要訊息：為表達謝意應該送花。語言結構：To VR 置於句首表目的；所有格 your 之後需名詞，故不可選形容詞 grateful。構詞：grat-＝感謝＋-itude＝狀態，同源字 agreeable、congratulate、西班牙文 gracias。"],
+["The ______ made the warm day seem ten degrees hotter than it really was.",["moisture","aquarium","humidity","protein"],2,"(C) humidity","主要訊息：溼氣讓暖日感覺更熱。辨析：humidity 指空氣中的水蒸氣含量，用於天氣與大氣；moisture 指固體或物品中所含的水分（wipe the moisture off the goggles）。語言結構：make + O + 原形動詞 seem，為使役動詞句型。"],
+["The government's new policy has had a negative ______ on the middle class.",["impact","insult","orbit","shift"],0,"(A) impact","主要訊息：新政策對中產階級有負面影響。語言結構：have a(n) adj. impact on sb./sth. 為固定搭配，介系詞必須用 on。發音與詞性：名詞重音在前 [ˋɪmpækt]，動詞重音在後 [ɪmˋpækt]。構詞：im-＝進入＋pact-＝敲擊。"],
+["Don't say things that will ______ others' self-esteem; words can leave scars.",["wound","injure","tremble","occupy"],1,"(B) injure","主要訊息：別說傷害他人自尊的話。辨析：injure 多指事故中受傷，亦可用於名聲、成就與自尊等抽象事物；wound 常指刀槍造成的外傷。語言結構：that 引導關係子句修飾 things。構詞：in-＝不＋jur-＝法律、權利，同源字 justice、jury。"],
+["Kim's boss gave her much more work, and to add ______ to injury, he lowered her salary.",["insult","tragedy","tendency","prevention"],0,"(A) insult","主要訊息：工作加重之外還被減薪。語言結構與生活活用：add insult to injury 為固定片語，意為「雪上加霜」，整體作插入語。詞性與發音：動詞 insult [ɪnˋsʌlt]，名詞 [ˋɪn͵sʌlt]。構詞：in-＝朝向＋sult-＝跳，「跳到人身上」即侮辱。"],
+["Don's desk had a ______ heap of paperwork that needed to be handled before Friday.",["coarse","mountainous","agreeable","precise"],1,"(B) mountainous","主要訊息：桌上有堆積如山的文件。語言結構與生活活用：此處為隱喻（metaphor），以「像山一般的」形容數量之多，與本義「多山的」（mountainous regions）相對。細節與邏輯：that needed to be handled 以關係子句說明待辦的壓力。"],
+["Experts say the committee should focus on the ______ of violence rather than react after it happens.",["participation","prevention","distribution","revision"],1,"(B) prevention","主要訊息：重點應放在預防而非事後反應。語言結構：the ___ of 之間需名詞；rather than 連接對等結構（of... 對比 react...）。構詞：pre-＝預先＋vent-＝來，「先來一步」即預防。生活活用：Prevention is better than cure. 預防勝於治療。"],
+["The political ideas expressed by the speaker have caused a ______ in public opinion.",["shift","recipe","marathon","formula"],0,"(A) shift","主要訊息：演講者的政治理念造成民意轉變。語言結構：a shift in + N 表「在某方面的轉變」；expressed by the speaker 為過去分詞片語修飾 ideas。一字多義：shift 亦指「輪班」（night shift），動詞則為「轉移」（shift from A to B）。"]
+];
+let qidx=0,qscore=0,qstreak=0,qtimer=null,qleft=20,QORDER=MCQ.map((_,i)=>i),RETRY=[];
+function drawQ(){
+  clearInterval(qtimer);
+  document.getElementById('qi').textContent=Math.min(qidx+1,QORDER.length)+' / '+QORDER.length+' 題（含錯題池）';
+  document.getElementById('qsc').textContent=qscore;
+  if(qidx>=QORDER.length&&RETRY.length){QORDER=QORDER.concat(RETRY);RETRY=[];toast('錯題池加碼：剛才答錯的題目再考一次')}
+  if(qidx>=QORDER.length){
+    document.getElementById('qbox').innerHTML='<div class="card" style="background:var(--lemon)">'+
+    '<div style="font-size:26px;font-weight:900">本回結束！得分 '+qscore+'</div>'+
+    '<p>'+(qscore>=9000?'🥇 穩定輸出，維持這個手感。':qscore>=5000?'🥈 主結構抓得住，細部搭配詞再磨一次。':'🌱 先回閃卡把搭配詞看熟，再回來挑戰。')+'</p>'+
+    '<button class="btn p" onclick="qidx=0;qscore=0;qstreak=0;QORDER=MCQ.map((_,i)=>i);RETRY=[];drawQ()">🔄 再來一回</button></div>';
+    fire();return;
+  }
+  const q=MCQ[QORDER[qidx]],L=['A','B','C','D'];
+  document.getElementById('qbox').innerHTML='<div class="card"><div class="sp"><span class="pill">Q'+(qidx+1)+'</span>'+
+   '<button class="spk" onclick="speak(\''+q[0].replace(/______/,'blank').replace(/'/g,"\\'")+'\')">🔊</button></div>'+
+   '<div style="font-size:17px;font-weight:600;margin:10px 0">'+q[0]+'</div>'+
+   q[1].map((o,i)=>'<button class="opt" id="o'+i+'" onclick="pickQ('+i+')">('+L[i]+') '+o+'</button>').join('')+
+   '<div id="qfb" style="margin-top:8px"></div></div>';
+  qleft=20;document.getElementById('qtm').textContent=qleft;
+  if(document.getElementById('timerOn').checked){
+    qtimer=setInterval(()=>{qleft--;const e=document.getElementById('qtm');e.textContent=qleft;
+      if(qleft<=0){clearInterval(qtimer);pickQ(-1)}},1000);
+  }
+}
+function pickQ(i){
+  clearInterval(qtimer);
+  const q=MCQ[QORDER[qidx]];let gain=0;
+  document.querySelectorAll('#qbox .opt').forEach((b,k)=>{b.onclick=null;
+    if(k===q[2]){b.classList.add('ok')}else{b.classList.add('dim');if(k===i)b.classList.add('no')}});
+  if(i===q[2]){qstreak++;gain=600+Math.round(400*Math.max(qleft,0)/20)+qstreak*100;qscore+=gain;
+    addScore(gain);fire()}
+  else{qstreak=0;addScore(-50);addWrong(q[1][q[2]]);if(!RETRY.includes(QORDER[qidx]))RETRY.push(QORDER[qidx])}
+  const LQ=['A','B','C','D'];
+  if(typeof LOG!=='undefined')logPush('mcq',{q:q[0],pick:(i<0?'（時間到，未作答）':'('+LQ[i]+') '+q[1][i]),
+    key:q[3],ok:i===q[2],exp:q[4]});
+  document.getElementById('qfb').innerHTML=
+   '<div style="font-weight:800;color:'+(i===q[2]?'var(--ok)':'var(--bad)')+'">'+
+   (i===q[2]?'🎯 答對 +'+gain+' 分':(i<0?'⏱ 時間到':'💧 這題再看一次詳解'))+'</div>'+
+   '<button class="btn p" style="margin-top:6px" onclick="this.nextElementSibling.classList.toggle(\'show\')">📖 參考解答：</button>'+
+   '<div class="ans"><b>'+q[3]+'</b><br>'+q[4]+'</div>'+
+   '<div style="margin-top:10px"><button class="btn b" onclick="qidx++;drawQ()">下一題 ➡️</button></div>';
+  document.getElementById('qsc').textContent=qscore;
+}
+drawQ();
+
+/* ================= 6 文意選填 ================= */
+const CLOZE=[
+{t:"Passage 1　The Rooftop Weather Station",
+ opts:["aggressive","cushion","distribute","estimate","gear","gratitude","humidity","precise","prevention","tendency"],
+ text:"Last spring our science club built a small weather station on the roof of the library. The first thing we learned was that the __1__ in this city is far higher than the numbers printed in our textbook. Our teacher asked for __2__ records instead of rough guesses, so we wrote down every reading twice a day. At first we could only __3__ how much rain would fall in an afternoon, but after three months the data began to show a clear __4__: storms arrive earlier every year. We then decided to __5__ our monthly report to every homeroom, printed on a single sheet so that nobody would throw it away. Keeping the __6__ dry was the hardest part, because the wind up there is surprisingly __7__ and once knocked a sensor off its stand. Luckily a thick mat on the floor __8__ the fall, and the sensor survived without a scratch. The club now works with the school nurse on the __9__ of heatstroke, sending a warning to the office whenever the reading passes a certain line. On the last day of the semester, the principal expressed his __10__ to the club in front of the whole school.",
+ key:[6,7,3,9,2,4,0,1,8,5],
+ exp:["(G) humidity｜主要訊息：這座城市的溼度遠高於課本數字。語言結構：the ___ in this city is 中 the 之後、單數動詞 is 之前需不可數名詞。辨析：humidity 指空氣中的水蒸氣含量，用於天氣與大氣；moisture 才是固體或物品所含的水分。衍生字 humid（潮溼的）。",
+  "(H) precise｜asked for ___ records 中名詞 records 之前需形容詞；precise＝精確的。細節與邏輯：instead of rough guesses 以「粗略猜測」形成對比，點出要求的正是精確。片語 to be precise 確切地說；名詞 precision。",
+  "(D) estimate｜could only VR，故空格需原形動詞；estimate＝估計、推斷。語言結構：how much rain would fall 為名詞子句當受詞，子句用直述語序。發音差異：動詞 [ˋɛstə͵met]，名詞 [ˋɛstəmət]。",
+  "(J) tendency｜a clear ___ 中形容詞之後需單數可數名詞；tendency＝傾向、趨勢。細節與邏輯：冒號之後 storms arrive earlier every year 正是這個趨勢的內容。生活活用：have a tendency to VR＝tend to VR。",
+  "(C) distribute｜decided to VR 之後需原形動詞；distribute sth. to sb.＝把某物分給某人。語言結構：printed on a single sheet 為過去分詞片語，so that 引導目的子句。構詞：dis-＝分開＋trib-＝分配。",
+  "(E) gear｜Keeping the ___ dry 中冠詞之後需名詞；gear 作「設備、裝置」時為不可數名詞，不加 -s。語言結構：動名詞片語 Keeping... 當主詞，故動詞用單數 was。一字多義：gear 亦指「齒輪」（可數）。",
+  "(A) aggressive｜is surprisingly ___ 中 be 動詞加副詞之後需形容詞；aggressive 此處為隱喻用法，把風形容得「很有攻擊性」。細節與邏輯：and once knocked a sensor off its stand 以具體事件佐證風勢之猛。名詞 aggression。",
+  "(B) cushion｜a thick mat ... ___ the fall 中主詞之後、受詞之前需動詞，且全段為過去式；cushion＝緩和……的衝擊。一字多義：cushion 本義為名詞「坐墊」，動詞由「加墊子」引申為緩衝，片語 cushion the blow 再引申為「緩解打擊」。",
+  "(I) prevention｜on the ___ of heatstroke 中 the 與 of 之間需名詞；prevention＝預防。細節與邏輯：sending a warning whenever... 以分詞構句說明預防的具體做法。構詞：pre-＝預先＋vent-＝來。生活活用：Prevention is better than cure.",
+  "(F) gratitude｜expressed his ___ 中所有格之後需名詞，故不可用形容詞 grateful；gratitude＝感謝之情。語言結構與生活活用：express one's gratitude to sb. 為正式場合的固定說法；in front of the whole school 以地點片語收尾，把畫面停在全校面前的致謝。"]},
+{t:"Passage 2　The Class Magazine",
+ opts:["coarse","dependent","impact","insult","literary","occupation","orbit","realistic","recipe","revise"],
+ text:"Our class decided to publish a __1__ magazine of our own, with poems, short stories, and interviews inside. For the interviews we chose one question for everybody: how did you choose your __2__? Many of us were surprised by the answers. A baker told us that his whole shop had been completely __3__ on one old oven for twenty years. A novelist admitted that she had to __4__ her first chapter more than thirty times before her editor was finally satisfied. Their stories were far more __5__ than the success videos we watch online. Writing the magazine was not easy, either. Our first draft used language so __6__ that our teacher simply asked us to read it aloud, and we heard the problem ourselves. One group even treated a gentle comment as an __7__ and refused to change a single word, until they saw how much better the edited version sounded. In the end we printed a short __8__ for good writing on the back cover: read widely, cut half of your adjectives, and let a friend check your logic. The magazine's __9__ on the school was bigger than we had expected, and three other classes soon started their own. Reading those pages now feels like watching small planets come into __10__ around one shared idea.",
+ key:[4,5,1,9,7,0,3,8,2,6],
+ exp:["(E) literary｜主要訊息：全班決定出版一本文學刊物。語言結構：a ___ magazine 中冠詞與名詞之間需形容詞；literary＝文學的。構詞：liter-＝文字＋-ary＝與……有關的。辨析：literate 指「有讀寫能力的」，literacy 是「讀寫能力」，三字同根但詞性與語意不同。",
+  "(F) occupation｜choose your ___ 中所有格之後需名詞；occupation＝職業。一字多義：occupation 亦指「佔領」（the occupation of Japan）。語言結構：此處為間接問句改為直接引語，故保留 how did you...? 的疑問語序。動詞 occupy，形容詞 occupational。",
+  "(B) dependent｜had been completely ___ on 中 be 動詞與介系詞 on 之間需形容詞；be dependent on sth.＝依賴某物。細節與邏輯：for twenty years 與過去完成式 had been 搭配，強調長期如此。反義字 independent；構詞 de-＝向下＋pend-＝懸掛。",
+  "(J) revise｜had to VR 之後需原形動詞；revise＝修改、校訂。細節與邏輯：more than thirty times 與 before her editor was finally satisfied 一前一後，說明修改之多。名詞 revision；構詞 re-＝再＋vis-＝看，「再看一次」即修訂。",
+  "(H) realistic｜far more ___ than 為比較級結構，空格需形容詞；realistic＝實際的、寫實的。細節與邏輯：than the success videos we watch online 以網路成功影片作對比，暗示那些影片並不實際。一字多義：realistic 亦指畫作「逼真的」。反義字 unrealistic。",
+  "(A) coarse｜language so ___ that 為 so...that 句型，so 之後需形容詞；coarse＝粗魯的、粗糙的。語言結構：so + adj. + that 子句表「如此……以致於……」。一字多義：coarse 本義為「粗的」（coarse salt、coarse skin），用於言行則是「粗魯的」。",
+  "(D) insult｜treated a gentle comment as an ___ 中冠詞 an 之後需名詞；treat A as B＝把 A 當成 B。細節與邏輯：until 子句以「看見修改後更好」收束，顯示這個反應並不合理。發音與詞性：名詞 [ˋɪn͵sʌlt]，動詞 [ɪnˋsʌlt]；片語 add insult to injury 雪上加霜。",
+  "(I) recipe｜a short ___ for good writing 中冠詞與形容詞之後需名詞；a recipe for sth.＝造成某結果的方法或原因。語言結構與生活活用：此處為隱喻，把寫作訣竅說成「食譜」；冒號後三個祈使句正是配方的內容。另一常見用法 a recipe for disaster 準會出事。",
+  "(C) impact｜The magazine's ___ on the school 中所有格之後、介系詞 on 之前需名詞；have/one's impact on sb./sth. 固定接 on。細節與邏輯：bigger than we had expected 與 three other classes soon started their own 一抽象一具體，後者是前者的證據。動詞重音在後 [ɪmˋpækt]。",
+  "(G) orbit｜come into ___ around 中介系詞 into 之後需名詞；orbit＝運行軌道。語言結構與生活活用：feels like watching... 中 like 為介系詞後接動名詞；結尾以「小行星繞著同一個想法運行」作隱喻，把一本刊物凝聚班級的力量視覺化。動詞用法：orbit the sun 繞太陽運行。"]}
+];
+const SHAPES=['▲','◆','●','■','▲','◆','●','■','▲','◆'];
+const OCOL=['#FF9AB8','#FFD34D','#6FC8FF','#7BE0A6','#C6A4FF','#FFA870','#F3E45B','#4FD9D0','#FF8FD6','#A8E05F'];
+let cz=0,czCur=null,czDone=[];
+function loadCloze(n){
+  cz=n;czCur=null;czDone=[];closeSel();
+  const c=CLOZE[n];
+  let html=c.text;
+  for(let i=0;i<10;i++){
+    html=html.replace('__'+(i+1)+'__',
+      '<span class="gap" id="cb'+i+'" title="點我選答案" onclick="openSel(event,'+i+')">('+(i+1)+')</span>');
+  }
+  document.getElementById('clpass').innerHTML='<h3 style="margin:0 0 8px">'+c.t+'</h3>'+
+    '<div style="line-height:2.5;font-size:16px;margin-top:6px">'+html+'</div>';
+  document.getElementById('clans').innerHTML='';
+  document.getElementById('curBlank').textContent='點題號空格作答';
+}
+/* 彩色色塊下拉選單：點題號展開，選完立刻收回空格裡 */
+function clMenu(){
+  let m=document.getElementById('clmenu');
+  if(!m){m=document.createElement('div');m.id='clmenu';document.body.appendChild(m);}
+  return m;
+}
+function closeSel(){const m=document.getElementById('clmenu');if(m)m.style.display='none';}
+function openSel(ev,i){
+  ev.stopPropagation();
+  const c=CLOZE[cz],L=['A','B','C','D','E','F','G','H','I','J'];
+  czCur=i;document.getElementById('curBlank').textContent='第 '+(i+1)+' 格';
+  const m=clMenu();
+  m.innerHTML='<div class="clmhd">第 '+(i+1)+' 格　請選一個答案</div>'+
+    c.opts.map((o,k)=>'<button class="clopt" style="background:'+OCOL[k]+'" onclick="pickSel('+i+','+k+')">'+
+      SHAPES[k]+' ('+L[k]+') '+o+'</button>').join('');
+  m.style.display='block';
+  const r=document.getElementById('cb'+i).getBoundingClientRect();
+  const mw=Math.min(330,innerWidth-24);
+  m.style.width=mw+'px';
+  let left=r.left+scrollX+r.width/2-mw/2;
+  left=Math.max(10,Math.min(left,scrollX+innerWidth-mw-10));
+  m.style.left=left+'px';
+  m.style.top=(r.bottom+scrollY+6)+'px';
+  const mh=m.getBoundingClientRect().height;
+  if(r.bottom+6+mh>innerHeight&&r.top-6-mh>0)m.style.top=(r.top+scrollY-mh-6)+'px';
+}
+document.addEventListener('click',e=>{const m=document.getElementById('clmenu');
+  if(m&&m.style.display==='block'&&!m.contains(e.target))closeSel()});
+addEventListener('resize',closeSel);
+function pickSel(i,o){
+  const c=CLOZE[cz],L=['A','B','C','D','E','F','G','H','I','J'];
+  const g=document.getElementById('cb'+i);
+  closeSel();
+  if(typeof LOG!=='undefined')logPush('cloze',{passage:c.t,n:i+1,pick:'('+L[o]+') '+c.opts[o],
+    key:'('+L[c.key[i]]+') '+c.opts[c.key[i]],ok:c.key[i]===o,exp:c.exp[i]});
+  if(c.key[i]===o){
+    g.className='gapdone';g.textContent='('+(i+1)+') '+c.opts[o];g.onclick=null;
+    if(!czDone.includes(i)){czDone.push(i);addScore(150);}
+    showExp(i);
+    if(czDone.length===10){document.getElementById('curBlank').textContent='全部完成 🎉';fire();addScore(300);}
+    else{document.getElementById('curBlank').textContent='答對第 '+(i+1)+' 格，繼續作答';}
+  }else{
+    g.classList.add('wrong');setTimeout(()=>g.classList.remove('wrong'),700);
+    addWrong(c.opts[c.key[i]]);addScore(-30);
+    toast('再想想：('+L[o]+') '+c.opts[o]+' 放在第 '+(i+1)+' 格不合適');
+  }
+}
+function showExp(i){
+  const c=CLOZE[cz];
+  const box=document.getElementById('clans');
+  const id='ce'+cz+'_'+i;
+  if(document.getElementById(id))return;
+  const d=document.createElement('div');d.className='card';d.id=id;
+  d.innerHTML='<div class="sp"><span class="pill">第 '+(i+1)+' 格</span>'+
+   '<button class="spk" onclick="speak(\''+c.opts[c.key[i]].replace(/'/g,"\\'")+'\')">🔊</button></div>'+
+   '<button class="btn p" style="margin-top:6px" onclick="this.nextElementSibling.classList.toggle(\'show\')">📖 參考解答：</button>'+
+   '<div class="ans">'+c.exp[i]+'</div>';
+  box.appendChild(d);
+}
+loadCloze(0);
+
+/* ================= 7 句子優化 ================= */
+const UP=[
+["The children were on the bed. The mattress was soft. They did not get hurt.","A thick mattress cushioned the children's fall, so nobody got hurt.","was soft → cushioned（精準動詞）；三句併一句，用 so 引導結果。"],
+["Rick is an adult. He still asks his parents for money. He asks for many other things too.","Although Rick is an adult, he is still dependent on his parents for many things.","用 Although 讓步子句；asks for → be dependent on，一個搭配詞收束整段。"],
+["The teacher had many books. The school year started. She gave the books to the students.","At the beginning of the school year, the teacher distributed books to the students.","gave → distributed（精準動詞）；用 At the beginning of 名詞片語表時間。"],
+["Kylie was driving. She thought about the time. She would get to her grandmother's house in the evening.","Kylie estimated that she would reach her grandmother's house in the early evening.","thought about the time → estimated that 子句；用時態一致的 would。"],
+["The new policy came out. The middle class has less money now. This is bad for them.","The government's new policy has had a negative impact on the middle class.","用 have a negative impact on 取代整個解釋句；現在完成式表影響延續至今。"],
+["Don has a lot of paperwork on his desk. It is piled very high. He must finish it.","Don's desk had a mountainous heap of paperwork that needed to be handled.","piled very high → mountainous（隱喻形容詞）；用關係子句補上「待處理」。"],
+["The speaker talked about politics. People changed their minds. Now opinion is different.","The political ideas expressed by the speaker have caused a shift in public opinion.","用過去分詞片語 expressed by... 修飾主詞；changed their minds → cause a shift in。"],
+["The committee does not wait for violence to happen. They work before it happens.","The committee focuses on the prevention of violence rather than reacting to incidents after they occur.","動詞句名詞化為 the prevention of；用 rather than 連接對等結構。"]
+];
+/* --- 題庫：每題都附「平淡無奇版」A1–A2 簡單句，參考解答用 B1–B2 的核心單字改寫 --- */
+/* 每輪 3 動詞 + 2 名詞 + 2 形容詞 + 1 副詞 + 2 搭配詞／句型（固定第 9~10 題），5 輪不重複 */
+let pid=0;
+const mk=(cat,a)=>a.map(x=>Object.assign({id:++pid,cat:cat},x));
+const POOL={
+verb:mk('verb',[
+ {word:"distribute",pos:"v.",ch:"分發；分配",target:"distributed books to",target_ch:"把書分發給……",baby:"The school year started. The teacher had many books. She gave them to the students.",model:"At the beginning of the school year, the teacher distributed books to the students.",model_ch:"老師在學期初將書本分發給學生。"},
+ {word:"estimate",pos:"v.",ch:"估計；推斷",target:"estimated that",target_ch:"估計……",baby:"Kylie was on the road. She thought she would arrive in the evening.",model:"Kylie estimated that she would reach her grandmother's house in the early evening.",model_ch:"凱莉估計她會在傍晚時抵達她外婆家。"},
+ {word:"cushion",pos:"v.",ch:"緩和……的衝擊",target:"cushioned David's fall",target_ch:"減緩大衛跌落的衝擊",baby:"David fell off the ladder. A mattress was under him. He was not badly hurt.",model:"A mattress cushioned David's fall off the ladder, so he didn't sustain any serious injuries.",model_ch:"床墊減緩了大衛從梯子跌落下來的衝擊，所以他沒有受到嚴重的傷害。"},
+ {word:"gear",pos:"v.",ch:"使適合；使準備好",target:"is geared for",target_ch:"適合……",baby:"The swimming class is for small children. Adults should not take it.",model:"The swimming class is geared for young children, so it is not suitable for adults.",model_ch:"這堂游泳課適合年紀較小的幼童，所以並不適合成人。"},
+ {word:"impact",pos:"v.",ch:"對……造成影響",target:"were impacted by",target_ch:"受到……衝擊",baby:"Storms hit the United States last week. Many towns had problems.",model:"Many cities and towns were impacted by the severe storms in the United States last week.",model_ch:"上週美國的劇烈暴風雨影響了許多城鎮。"},
+ {word:"injure",pos:"v.",ch:"傷害(名譽、自尊)",target:"injure others' self-esteem",target_ch:"傷害他人的自尊",baby:"Some words are mean. They make people feel small. Do not say them.",model:"Don't say things that will injure others' self-esteem.",model_ch:"不要說那些會傷害他人自尊的話。"},
+ {word:"insult",pos:"v.",ch:"侮辱",target:"insult people",target_ch:"侮辱別人",baby:"Do not say bad words to people. You may hurt how they feel.",model:"Don't insult people because you might hurt their feelings.",model_ch:"不要侮辱別人，因為你可能會傷害到他們的感受。"},
+ {word:"occupy",pos:"v.",ch:"佔據(空間)",target:"occupy most of the shelves",target_ch:"佔據大部分的架子",baby:"Lucy has many toys. They are on almost every shelf in her room.",model:"Lucy's toys occupy most of the shelves in her bedroom.",model_ch:"露西的玩具佔據了她臥室大部分的架子。"},
+ {word:"orbit",pos:"v.",ch:"沿軌道運行",target:"orbiting the sun",target_ch:"繞著太陽運行",baby:"There are eight planets. They go around the sun.",model:"There are eight planets orbiting the sun.",model_ch:"有八個星球繞著太陽轉。"},
+ {word:"prompt",pos:"v.",ch:"促使；引起",target:"prompted the police chief to",target_ch:"促使警察局長……",baby:"Crime went up in the city. The police chief did something about it.",model:"A rise in crime prompted the police chief to take action.",model_ch:"犯罪率的上升促使警察局長採取行動。"},
+ {word:"revise",pos:"v.",ch:"修改；校訂",target:"revised his book",target_ch:"修改他的書",baby:"The author wrote a book. He changed it again and again. At last he liked it.",model:"The author revised his book many times before he was satisfied.",model_ch:"那位作家多次修改他的書，直到滿意為止。"},
+ {word:"shift",pos:"v.",ch:"轉移；改變",target:"shifted from",target_ch:"從……轉移",baby:"We talked about our jobs. Then we talked about fun things instead.",model:"The conversation shifted from what we did for work to what we did for fun.",model_ch:"對話從我們的工作轉移到我們的娛樂活動。"},
+ {word:"tremble",pos:"v.",ch:"顫抖；搖晃",target:"made the old man's hands tremble",target_ch:"使老先生雙手顫抖",baby:"The old man is sick. His hands shake all the time.",model:"The disease made the old man's hands tremble.",model_ch:"疾病使得那位老先生雙手顫抖。"},
+ {word:"wound",pos:"v.",ch:"(因槍砲刀劍而)使受傷",target:"were wounded in",target_ch:"在……中受傷",baby:"There was a gun fight. Many people got hurt.",model:"Lots of people were wounded in that gun fight.",model_ch:"許多人在那場槍戰中受傷。"},
+ {word:"distribute",pos:"v.",ch:"分配；分布",target:"is distributed by",target_ch:"由……分配",baby:"Poor people need food. The United Nations gives it out.",model:"Food for the needy is distributed by the United Nations.",model_ch:"給貧窮人們的食物是由聯合國分配的。"},
+ {word:"participate",pos:"v.",ch:"參與、參加",target:"participate in",target_ch:"參加……",baby:"The marathon is on Sunday. Mandy's best friend will join it.",model:"Mandy's best friend will participate in the marathon this Sunday.",model_ch:"曼蒂最好的朋友本週日將參加這場馬拉松。"}
+]),
+noun:mk('noun',[
+ {word:"aggression",pos:"n.",ch:"侵略；攻擊性",target:"an act of aggression",target_ch:"侵略行為",baby:"One country attacked its neighbor. People all over the world said it was wrong.",model:"The country's act of aggression against its neighbor was condemned around the world.",model_ch:"這個國家對鄰國的侵略行為受到全世界的譴責。"},
+ {word:"gratitude",pos:"n.",ch:"感謝，感激之情",target:"show your gratitude",target_ch:"表示你的感謝",baby:"Doris helped you a lot. You should say thank you. Send her flowers.",model:"To show your gratitude, you should send Doris a bouquet of flowers.",model_ch:"為了表示你的感謝，你應該送多莉絲一束花。"},
+ {word:"humidity",pos:"n.",ch:"溼氣；溼度",target:"The humidity made",target_ch:"溼氣使得……",baby:"The day was warm. The air was very wet. It felt much hotter.",model:"The humidity made the warm day seem ten degrees hotter.",model_ch:"溼氣讓這暖日感覺像是多了十度般炎熱。"},
+ {word:"impact",pos:"n.",ch:"衝擊；影響",target:"a negative impact on",target_ch:"對……有負面的影響",baby:"The government made a new policy. The middle class is worse off now.",model:"The government's new policy has had a negative impact on the middle class.",model_ch:"政府的新政策對中產階級有負面的影響。"},
+ {word:"occupation",pos:"n.",ch:"職業",target:"their different occupations",target_ch:"他們的不同職業",baby:"Parents came to school yesterday. They talked about their jobs.",model:"Yesterday, parents came to our school to talk about their different occupations.",model_ch:"昨天家長們來我們學校談論他們的不同職業。"},
+ {word:"participation",pos:"n.",ch:"參加",target:"without the participation of",target_ch:"沒有……的參與",baby:"Mandy had a birthday party. Her best friend did not come. She felt sad.",model:"Without the participation of her best friend, Mandy felt a little down at her birthday party.",model_ch:"曼蒂最好的朋友並未參加她的生日派對，使她感到有點失落。"},
+ {word:"prevention",pos:"n.",ch:"預防；阻止",target:"the prevention of",target_ch:"對……的預防",baby:"The committee does not wait for violence to happen. They work before it happens.",model:"The committee focuses on the prevention of violence rather than reacting to incidents after they occur.",model_ch:"該委員會著重於暴力的預防，而不是在事情發生後做出反應。"},
+ {word:"reduction",pos:"n.",ch:"減少；減少量",target:"a small reduction in",target_ch:"在……方面微幅減少",baby:"Fewer students take art this year. The drop is not very big.",model:"There was a small reduction in the number of students taking art this year.",model_ch:"今年修藝術課的學生人數微幅減少。"},
+ {word:"shift",pos:"n.",ch:"轉變；輪班",target:"a shift in public opinion",target_ch:"民意的轉變",baby:"The speaker talked about politics. After that people thought differently.",model:"The political ideas expressed by the speaker have caused a shift in public opinion.",model_ch:"那位演講人表達的政治理念已造成民意的轉變。"},
+ {word:"tendency",pos:"n.",ch:"傾向；趨勢",target:"has a tendency to",target_ch:"有……的傾向",baby:"Travis talks a lot. He never stops. Do you really want to sit in his car?",model:"Travis has a tendency to talk a lot, so are you sure you want to ride in the car with him?",model_ch:"崔維斯有多話的傾向，所以你確定你要跟他一起坐車嗎？"},
+ {word:"tragedy",pos:"n.",ch:"悲劇；悲劇性事件",target:"ended in tragedy",target_ch:"以悲劇收場",baby:"Will was on holiday. His son almost drowned. It was nearly very bad.",model:"Will's holiday nearly ended in tragedy when his son almost drowned in the sea.",model_ch:"威爾的假期差點以悲劇收場，他的兒子幾乎在海裡溺斃。"},
+ {word:"recipe",pos:"n.",ch:"造成……的原因",target:"a recipe for disaster",target_ch:"準會出事的組合",baby:"The two families do not like each other. The wedding will go badly.",model:"Tension between the two families means the wedding is a recipe for disaster.",model_ch:"那兩個家庭之間的緊張氣氛意味著婚禮會成災難。"},
+ {word:"estimate",pos:"n.",ch:"估計；估價",target:"an estimate for",target_ch:"……的估價",baby:"Bill's bathroom is broken. He asked the plumber about the price.",model:"Bill asked the plumber to give him an estimate for the bathroom repair.",model_ch:"比爾要求水管工人給他修繕浴室的估價。"},
+ {word:"guardian",pos:"n.",ch:"守護者；監護人",target:"became her guardian",target_ch:"成為她的監護人",baby:"Sophie's parents died. Her aunt took care of her after that.",model:"After Sophie's parents died, her aunt became her guardian.",model_ch:"蘇菲父母過世後，她阿姨成為她的監護人。"},
+ {word:"formula",pos:"n.",ch:"公式、方程式",target:"know this formula",target_ch:"知道這個公式",baby:"This math problem is hard. You need one rule to solve it.",model:"To figure out this math problem, you have to know this formula.",model_ch:"為了要解出這道數學問題，你需要知道這個公式。"},
+ {word:"protein",pos:"n.",ch:"蛋白質",target:"sources of protein",target_ch:"蛋白質來源",baby:"Some people do not eat meat. Nuts and tofu are good for them.",model:"Nuts and tofu are great sources of protein for people who don't eat meat.",model_ch:"堅果和豆腐對不吃肉的人來說是很好的蛋白質來源。"}
+]),
+adj:mk('adj',[
+ {word:"aggressive",pos:"adj.",ch:"積極進取的",target:"was very aggressive in",target_ch:"很積極地……",baby:"The banker wanted me to open an account. He tried very hard.",model:"The banker was very aggressive in trying to persuade me to open an account.",model_ch:"那位銀行員很積極地試著說服我開戶。"},
+ {word:"agreeable",pos:"adj.",ch:"欣然贊同的",target:"seemed agreeable",target_ch:"似乎同意",baby:"I said we should leave at eight tomorrow. He did not say no.",model:"I suggested that we depart tomorrow at 8:00 a.m., and he seemed agreeable without expressing any objections.",model_ch:"我提議明天早上八點出發，他似乎同意並沒有提出異議。"},
+ {word:"coarse",pos:"adj.",ch:"粗糙的",target:"coarse skin",target_ch:"粗糙的皮膚",baby:"Sharks feel rough. Their skin is like sandpaper.",model:"Many sharks have coarse skin like sandpaper.",model_ch:"很多鯊魚有著像砂紙一般粗糙的皮膚。"},
+ {word:"dependent",pos:"adj.",ch:"依靠的；仰賴的",target:"is still dependent on",target_ch:"仍然依賴……",baby:"Rick is grown up. He still asks his parents for many things.",model:"Although Rick is an adult, he is still dependent on his parents for many things.",model_ch:"雖然瑞克是個成年人，但他有很多事情還是依賴父母。"},
+ {word:"grateful",pos:"adj.",ch:"感謝的；感激的",target:"am very grateful for",target_ch:"很感謝……",baby:"They helped me many times. They were very kind. I want to say thank you.",model:"I'm very grateful for all the kind assistance they've given me.",model_ch:"我很感謝他們所有善意的協助。"},
+ {word:"literary",pos:"adj.",ch:"文學的；文藝的",target:"her literary achievements",target_ch:"她的文學成就",baby:"The poet wrote many good poems. Everyone knows her name now.",model:"The poet was celebrated for her literary achievements.",model_ch:"這位詩人以她的文學成就聞名。"},
+ {word:"mountainous",pos:"adj.",ch:"像山一般的",target:"a mountainous heap of",target_ch:"堆疊成山的……",baby:"Don has a lot of paperwork. It is piled very high on his desk.",model:"Don's desk had a mountainous heap of paperwork that needed to be handled.",model_ch:"唐恩的桌上有堆疊成山的文件需要處理。"},
+ {word:"precise",pos:"adj.",ch:"精確的；準確的",target:"a precise measurement",target_ch:"準確的測量",baby:"The scientist used a special tool. He measured it very carefully.",model:"The scientist used a special tool to make a precise measurement.",model_ch:"那位科學家使用特別的工具以進行準確的測量。"},
+ {word:"prompt",pos:"adj.",ch:"立即的；準時的",target:"a prompt response",target_ch:"立即的回答",baby:"If you read the book, my question is easy. You can answer right away.",model:"Anyone who read the book should be able to give a prompt response to my question.",model_ch:"任何一個讀過這本書的人都能立即回答我的問題。"},
+ {word:"realistic",pos:"adj.",ch:"逼真的；寫實的",target:"so realistic that",target_ch:"如此逼真以致於……",baby:"Look at this painting. It does not look like a painting. It looks like a photo.",model:"The painting was so realistic that it looked like a photograph.",model_ch:"這幅畫作太逼真了，以致於看起來像照片。"},
+ {word:"realistic",pos:"adj.",ch:"實際的",target:"have to be realistic",target_ch:"需要實際一點",baby:"You are setting goals. Do not dream too big. Think about what you can do.",model:"You have to be realistic when you make goals for yourself.",model_ch:"在替自己訂定目標時，你需要實際一點。"},
+ {word:"disagreeable",pos:"adj.",ch:"令人不愉快的",target:"a disagreeable taste",target_ch:"令人不舒服的味道",baby:"I took the medicine. My mouth felt bad after that.",model:"The medicine left a disagreeable taste in my mouth.",model_ch:"這藥在我嘴裡留下令人不舒服的味道。"},
+ {word:"independent",pos:"adj.",ch:"獨立的；自立的",target:"independent of",target_ch:"不依賴……",baby:"Sandy got her first job. Now she does not need money from her family.",model:"After getting her first job, Sandy became financially independent of her family.",model_ch:"找到第一份工作後，珊蒂在經濟上不再依賴家人。"}
+]),
+adv:mk('adv',[
+ {word:"precisely",pos:"adv.",ch:"確切地；精確地",target:"To be precise",target_ch:"精確地說",baby:"The camp is not far. The distance is 23.7 km from here.",model:"To be precise, the camp is 23.7 km from here.",model_ch:"精確地說，那個營地離這裡有二十三點七公里。"},
+ {word:"promptly",pos:"adv.",ch:"立刻；準時地",target:"promptly",target_ch:"立刻",baby:"The crime rate went up. The police chief did something at once.",model:"The police chief promptly took action after a rise in crime.",model_ch:"犯罪率上升後，警察局長立刻採取行動。"},
+ {word:"aggressively",pos:"adv.",ch:"積極地；強勢地",target:"aggressively",target_ch:"積極地",baby:"The banker wanted me to open an account. He pushed very hard.",model:"The banker aggressively tried to persuade me to open an account.",model_ch:"那位銀行員很積極地試著說服我開戶。"},
+ {word:"gratefully",pos:"adv.",ch:"感激地",target:"gratefully",target_ch:"感激地",baby:"They helped me. I took their help. I said thank you.",model:"I gratefully accepted all the kind assistance they offered me.",model_ch:"我感激地接受了他們提供的所有善意協助。"},
+ {word:"realistically",pos:"adv.",ch:"實際地",target:"realistically",target_ch:"實際地",baby:"You want to set goals. Think about real life first.",model:"You should realistically consider your own schedule before setting any goals.",model_ch:"訂目標之前，你應該實際地考量自己的時間表。"},
+ {word:"completely",pos:"adv.",ch:"完全地",target:"completely",target_ch:"完全地",baby:"The baker has one old oven. His shop cannot work without it.",model:"The baker's shop was completely dependent on one old oven.",model_ch:"這位麵包師的店完全依賴一座老烤箱。"}
+]),
+pattern:mk('pattern',[
+ {word:"讓步子句",pos:"pattern",ch:"Although + S + V, S + V",target:"Although Rick is an adult",target_ch:"雖然瑞克是個成年人",baby:"Rick is grown up. He still needs his parents for many things.",model:"Although Rick is an adult, he is still dependent on his parents for many things.",model_ch:"雖然瑞克是個成年人，但他有很多事情還是依賴父母。"},
+ {word:"使役動詞",pos:"pattern",ch:"make + O + VR",target:"made the old man's hands tremble",target_ch:"使老先生雙手顫抖",baby:"The old man is sick. His hands shake because of it.",model:"The disease made the old man's hands tremble.",model_ch:"疾病使得那位老先生雙手顫抖。"},
+ {word:"so...that 句型",pos:"pattern",ch:"so + adj. + that + S + V",target:"so realistic that",target_ch:"如此逼真以致於……",baby:"The painting looks real. It does not look like a painting at all.",model:"The painting was so realistic that it looked like a photograph.",model_ch:"這幅畫作太逼真了，以致於看起來像照片。"},
+ {word:"被動語態",pos:"pattern",ch:"be + p.p. + by",target:"were impacted by",target_ch:"受到……的影響",baby:"Storms hit the country last week. Many towns had trouble.",model:"Many cities and towns were impacted by the severe storms last week.",model_ch:"上週的劇烈暴風雨影響了許多城鎮。"},
+ {word:"目的不定詞",pos:"pattern",ch:"To VR 置句首表目的",target:"To show your gratitude",target_ch:"為了表示你的感謝",baby:"Doris helped you. Say thank you to her. Send her flowers.",model:"To show your gratitude, you should send Doris a bouquet of flowers.",model_ch:"為了表示你的感謝，你應該送多莉絲一束花。"},
+ {word:"名詞子句",pos:"pattern",ch:"S + V + what + S + V",target:"shifted from what we did",target_ch:"從我們所做的事轉移",baby:"We talked about work. Then we talked about fun. The topic changed.",model:"The conversation shifted from what we did for work to what we did for fun.",model_ch:"對話從我們的工作轉移到我們的娛樂活動。"},
+ {word:"關係子句",pos:"pattern",ch:"N + that + needed to be + p.p.",target:"that needed to be handled",target_ch:"需要被處理的",baby:"Don has a high pile of paperwork. He must finish it.",model:"Don's desk had a mountainous heap of paperwork that needed to be handled.",model_ch:"唐恩的桌上有堆疊成山的文件需要處理。"},
+ {word:"介系詞片語開頭",pos:"pattern",ch:"Without + N, S + V",target:"Without the participation of",target_ch:"沒有……的參與",baby:"Mandy had a party. Her best friend did not come. She felt down.",model:"Without the participation of her best friend, Mandy felt a little down at her birthday party.",model_ch:"曼蒂最好的朋友並未參加她的生日派對，使她感到有點失落。"},
+ {word:"對等連接",pos:"pattern",ch:"A rather than B（前後結構對等）",target:"rather than reacting",target_ch:"而不是做出反應",baby:"The committee works before violence happens. They do not only answer afterwards.",model:"The committee focuses on the prevention of violence rather than reacting to incidents after they occur.",model_ch:"該委員會著重於暴力的預防，而不是在事情發生後做出反應。"},
+ {word:"not only...but also",pos:"pattern",ch:"重點落在 but also 之後（後者才是主訊息）",target:"not only ... but also",target_ch:"不只……更重要的是……",baby:"The magazine changed our writing. It also changed how other classes think. The second part matters more.",model:"The class magazine not only improved our writing but also changed the way other classes thought about reading.",model_ch:"這本班刊不只改善了我們的寫作，更改變了其他班級看待閱讀的方式。"},
+ {word:"分詞構句",pos:"pattern",ch:"V-ing, 表伴隨或結果",target:"sharing insights about",target_ch:"分享關於……的見解",baby:"Parents came to school. They talked about their jobs. They told us what they learned.",model:"Parents came to our school to talk about their occupations, sharing insights about their jobs.",model_ch:"家長們來我們學校談論他們的職業，並就自己的工作分享見解。"},
+ {word:"比較級",pos:"pattern",ch:"far more + adj. + than",target:"far more realistic than",target_ch:"遠比……實際",baby:"Their stories are true to life. The videos online are not.",model:"Their stories were far more realistic than the success videos we watch online.",model_ch:"他們的故事遠比我們在網路上看的成功影片來得實際。"}
+])};
+
+/* --- SPA 狀態機 --- */
+let currentRound=1,currentQuestionIndex=0,roundScore=0,currentRoundQuestions=[],
+    roundReportData=[],testedIds=[];
+function drawRound(){
+  const need={verb:3,noun:2,adj:2,adv:1,pattern:2};
+  currentRoundQuestions=[];
+  ['verb','noun','adj','adv'].forEach(c=>{
+    const left=shuffle(POOL[c].filter(q=>!testedIds.includes(q.id)));
+    const take=left.slice(0,need[c]);take.forEach(q=>testedIds.push(q.id));
+    currentRoundQuestions=currentRoundQuestions.concat(take);
+  });
+  const pl=shuffle(POOL.pattern.filter(q=>!testedIds.includes(q.id))).slice(0,2);
+  pl.forEach(q=>testedIds.push(q.id));
+  currentRoundQuestions=currentRoundQuestions.concat(pl);
+}
+function renderPractice(){
+  if(currentQuestionIndex>=10){renderReview();return}
+  const q=currentRoundQuestions[currentQuestionIndex];
+  document.getElementById('ubox').innerHTML=
+  '<div class="card" style="background:var(--sky)"><div class="row">'+
+   '<span class="stat">第 '+currentRound+' / 5 輪</span>'+
+   '<span class="stat">本輪進度 '+(currentQuestionIndex+1)+' / 10</span>'+
+   '<span class="stat">本輪得分 <b id="rsc">'+roundScore+'</b> / 2000</span>'+
+   '<span class="stat">🏆 累計 '+S.total+'</span></div>'+'</div>'+
+  '<div class="card"><span class="pill">'+q.pos+'</span> <b style="font-size:20px">'+q.word+'</b>'+
+   '<div class="sub">'+q.ch+'</div>'+
+   '<div class="ex"><div class="zh">平淡無奇版</div><div class="en">'+q.baby+
+    ' <button class="spk" onclick="speak(\''+q.baby.replace(/'/g,"\\'")+'\')">🔊</button></div></div>'+
+   '<div class="col">💡 必須使用這個搭配詞或句型：<b>'+q.target+'</b>（'+q.target_ch+'）</div>'+
+   '<textarea id="uans" placeholder="Write your sentence here..."></textarea>'+
+   '<div class="row" style="margin-top:8px"><button class="btn g" onclick="submitAns()">💌 送出批改</button>'+
+   '<button class="spk" onclick="speak(\''+q.model.replace(/'/g,"\\'")+'\')">🔊</button></div>'+
+   '<div id="ufb"></div></div>';
+}
+function submitAns(){
+  const q=currentRoundQuestions[currentQuestionIndex];
+  const v=document.getElementById('uans').value.trim();
+  const key=q.target.replace(/sb\.|sth\.|S \+ V|VR|\+|\.\.\./g,' ').split(/\s+/).filter(w=>w.length>2);
+  const hit=key.length?key.every(k=>new RegExp(esc(k),'i').test(v)):true;
+  const ok=hit&&v.split(/\s+/).length>=5;
+  const gain=ok?200:-50;
+  roundScore=Math.max(0,roundScore+gain);addScore(gain);
+  if(!ok)addWrong(q.target);else fire();
+  roundReportData.push({q:q,ans:v||'（未作答）',ok:ok});
+  if(typeof LOG!=='undefined')logPush('up',{round:currentRound,idx:currentQuestionIndex+1,word:q.word,
+    pos:q.pos,ch:q.ch,target:q.target,target_ch:q.target_ch,baby:q.baby,ans:v||'（未作答）',ok:ok,
+    model:q.model,model_ch:q.model_ch});
+  const titles=['Excellent job!','You nailed it!','That is exam-level!','Beautiful structure!'];
+  document.getElementById('ufb').innerHTML=
+   '<div class="card" style="margin-top:10px;background:'+(ok?'#CFF0DE':'#FBD9E3')+'">'+
+   '<div class="sp"><b>'+(ok?'🎉 '+rnd(titles):'💪 別灰心！我們來做點小修正')+'</b>'+
+   '<span class="pill" style="background:'+(ok?'#9BE3BF':'#FFC6D6')+'">'+(ok?'+200 分 🎯':'−50 分 💧')+'</span></div>'+
+   '<div class="sub">'+(ok?'搭配詞用對了，句子長度也足夠。':'檢查是否完整用上「'+q.target+'」，並讓句子至少有一個主要子句。')+'</div>'+
+   '<button class="btn p" style="margin-top:6px" onclick="this.nextElementSibling.classList.toggle(\'show\')">📖 參考解答：</button>'+
+   '<div class="ans"><b>課堂參考範例：</b>'+hl(q.model,q.target)+'<br>'+q.model_ch+'</div>'+
+   '<div style="margin-top:10px"><button class="btn b" onclick="nextQ()">'+
+   (currentQuestionIndex===9?'🏆 查看本輪結算結果':'下一題 ➡️')+'</button></div></div>';
+  document.getElementById('rsc').textContent=roundScore;
+}
+function hl(s,t){const k=t.split(/\s+/).filter(w=>/^[a-z]+$/i.test(w)&&w.length>2);
+  let o=s;k.forEach(w=>{o=o.replace(new RegExp('('+esc(w)+')','ig'),'<mark style="background:var(--lemon)">$1</mark>')});return o}
+function nextQ(){currentQuestionIndex++;renderPractice();scrollTo({top:0,behavior:'smooth'})}
+function renderReview(){
+  const lvl=roundScore>=1800?['🥇 寫作大師','你把 U8 的搭配詞與句型都用到位了，維持這個標準去寫學測作文。']
+    :roundScore>=1200?['🥈 表現良好','再把漏掉的搭配詞補回句子裡，平淡句也能變成主結構。']
+    :['🌱 繼續加油','先回閃卡把 U8 搭配詞讀熟；一點一點累積，就能把平淡句子翻新。'];
+  const bad=roundReportData.filter(r=>!r.ok);
+  document.getElementById('ubox').innerHTML=
+  '<div class="card" style="background:var(--lemon)"><b>📊 成效分析</b>'+
+   '<div style="font-size:28px;font-weight:900">'+roundScore+' / 2000</div>'+
+   '<div>🏆 累計總分 '+S.total+'　｜　'+lvl[0]+'</div><div class="sub">'+lvl[1]+'</div></div>'+
+  '<div class="card"><b>📌 建議重點加強清單</b>'+(bad.length?bad.map(r=>
+   '<div class="ex"><div class="en">'+r.q.target+'（字首 '+r.q.target[0].toUpperCase()+'）</div><div class="zh">'+r.q.target_ch+'</div></div>').join('')
+   :'<div class="sub">本輪全對，恭喜！🎉</div>')+'</div>'+
+  '<div class="card"><b>🔍 完全對照總覽</b>'+roundReportData.map((r,i)=>
+   '<div style="border:2px solid '+(r.ok?'var(--ok)':'var(--bad)')+';border-radius:14px;padding:10px;margin:8px 0">'+
+   '<span class="pill" style="background:'+(r.ok?'#CFF0DE':'#FBD9E3')+'">Q'+(i+1)+' '+(r.ok?'+200':'−50')+'</span>'+
+   '<div class="ex"><div class="zh">你的回答</div><div class="en">'+r.ans+'</div></div>'+
+   '<div class="ex"><div class="zh">AI 智慧修正版（建議）</div><div class="en">'+(r.ok?'結構完整，可再加一個 when／because 子句讓訊息更密。':'請把「'+r.q.target+'」完整寫進句子，再補上主詞與動詞。')+'</div></div>'+
+   '<div class="ex"><div class="zh">課堂參考範例</div><div class="en">'+hl(r.q.model,r.q.target)+'</div><div class="zh">'+r.q.model_ch+'</div></div></div>').join('')+'</div>'+
+  '<div class="card"><div class="row"><button class="btn" onclick="endSession()">🚪 結束本次學習</button>'+
+   '<button class="btn p" onclick="nextRound()">🔄 繼續挑戰下一輪</button></div></div>';
+  fire();
+}
+function nextRound(){
+  if(currentRound>=5){currentRound=1;testedIds=[];toast('五輪完成，題庫重置，從第 1 輪重新開始')}
+  else{currentRound++;toast('第 '+currentRound+' 輪開始，累計總分 '+S.total+' 分持續累加')}
+  currentQuestionIndex=0;roundScore=0;roundReportData=[];drawRound();renderPractice();
+  scrollTo({top:0,behavior:'smooth'});
+}
+function endSession(){toast('今天累計 '+S.total+' 分，明天見！記得回錯題池複習。')}
+drawRound();renderPractice();
+
+/* ================= 8 大富翁 ================= */
+const BQ=[
+{q:"Choose the right preposition: Rick is still dependent ____ his parents for many things.",o:["on","to","with","of"],a:0,e:"be dependent on sb./sth. (for sth.)＝依賴某人事物；反義 be independent of sb.（介系詞改為 of）。"},
+{q:"Choose the right preposition: The teacher distributed books ____ the students.",o:["for","to","at","into"],a:1,e:"distribute sth. to sb.＝把某物分給某人，to 表接受的對象；若用 among 則強調「在群體之間分配」。"},
+{q:"Choose the right preposition: The new policy has had a negative impact ____ the middle class.",o:["in","for","on","about"],a:2,e:"have a(n) adj. impact on sb./sth.＝對某人事物有……的影響，介系詞固定用 on；influence 與 effect 亦接 on。"},
+{q:"Choose the right preposition: I'm very grateful ____ all the kind assistance they've given me.",o:["for","to","with","at"],a:0,e:"be grateful for sth.＝對某事感激；be grateful to sb. for sth. 則同時點出感謝的對象與原因。"},
+{q:"Choose the right preposition: To add insult ____ injury, he told her he was lowering her salary.",o:["on","to","with","for"],a:1,e:"add insult to injury＝雪上加霜，為固定片語，不可改介系詞。"},
+{q:"Choose the right preposition: There was a small reduction ____ the number of students taking art.",o:["of","in","to","on"],a:1,e:"a reduction in + N＝在某方面的減少（increase/decrease in 同理）；a reduction of 20% 才是表減少的幅度。"},
+{q:"Choose the right preposition: Travis has a tendency ____ talk a lot.",o:["to","for","of","in"],a:0,e:"have a tendency to VR＝tend to VR，有……的傾向；to 後接原形動詞，非介系詞。"},
+{q:"Choose the right preposition: Will's holiday nearly ended ____ tragedy.",o:["with","in","to","by"],a:1,e:"end in + N＝以……收場（end in tragedy／disaster／failure）；end with 則指「以……作為結尾」。"},
+{q:"一字多義：In 'A mattress cushioned David's fall,' cushion means ____.",o:["坐墊","緩和衝擊","裝飾","椅背"],a:1,e:"cushion 當名詞是「坐墊」，當動詞由「加墊子」引申為「緩和衝擊」；cushion the blow 則再引申為「緩解打擊」。"},
+{q:"一字多義：In 'Don's desk had a mountainous heap of paperwork,' mountainous means ____.",o:["多山的","像山一般多的","高海拔的","崎嶇的"],a:1,e:"mountainous 本義「多山的」（mountainous regions），用於數量則是隱喻「像山一般多的」。"},
+{q:"一字多義：In 'The wedding is a recipe for disaster,' recipe means ____.",o:["食譜","處方","造成……的原因","配方比例"],a:2,e:"a recipe for sth.＝很可能導致某結果的做法；本義「烹飪配方」（recipe book）在此為隱喻。"},
+{q:"一字多義：In 'Leo works the night shift,' shift means ____.",o:["轉移","輪班","改變","排檔"],a:1,e:"shift 當名詞除了「轉變」（a shift in public opinion），也指「輪班」：day/night shift、early/late shift。"},
+{q:"辨析：Which word describes the water vapor in the air?",o:["moisture","humidity","protein","scenery"],a:1,e:"humidity 指空氣中的水蒸氣含量，用於天氣與大氣；moisture 指固體或物品中所含的水分（wipe the moisture off the goggles）。"},
+{q:"構詞法：aquarium 的字尾 -arium 表示什麼？",o:["人","與……有關的場地","否定","可……的"],a:1,e:"-arium＝與某事物有關的場所：aquarium 水族館、planetarium 天文館、insectarium 昆蟲館。字根 aqua-＝水。"},
+{q:"構詞法：prevention 的字根 vent- 是什麼意思？",o:["看","來","走","說"],a:1,e:"拉丁文 venire＝來；pre-（預先）＋vent-（來）→ prevention 預防，即「先來一步」。同源字：event、invent、convene、avenue。"},
+{q:"寫作優化：Which sentence best uses 'not only...but also'?",o:["The magazine not only improved our writing but also was nice.","Not only the magazine improved writing but also reading.","The class magazine not only improved our writing but also changed the way other classes thought about reading.","The magazine improved not only writing but also it changed reading."],a:2,e:"not only...but also 需連接對等結構（此處為兩個動詞片語 improved... / changed...），且訊息重點落在 but also 之後——改變其他班級的閱讀觀念才是主訊息。"}
+];
+const BOARD=[];
+(function(){
+  const CLUE=['🏁 案發現場：學生會辦','🔍 潮濕的紙箱','🔍 消失的企劃書','🔍 走廊上的低語','🔍 借用器材登記表','🍀 機會格','🔍 監視器的死角','🔍 一張活動海報','🔍 偶像簽名的收據','🎯 再擲一次','🔍 匿名的錄音檔','🔍 屋頂花園的腳印','🍀 機會格','🔍 校刊社的參考資料','🔍 備份硬碟的時間戳','🎯 再擲一次','🔍 關鍵證人現身','🏆 真相大白'];
+  for(let i=0;i<18;i++)BOARD.push(CLUE[i]);
+})();
+let bp=0,bscore=0;
+function paintBoard(){
+  document.getElementById('board').innerHTML=BOARD.map((s,i)=>
+    '<div class="sq'+(i===bp?' here':'')+'">'+(i+1)+'<br>'+s+'</div>').join('');
+  document.getElementById('pos').textContent=bp+1;
+  document.getElementById('msc').textContent=bscore;
+}
+function resetBoard(){bp=0;bscore=0;paintBoard();document.getElementById('mqbox').innerHTML='';toast('棋盤已重置')}
+function roll(){
+  const n=1+Math.floor(Math.random()*6);
+  document.getElementById('dice').textContent=['⚀','⚁','⚂','⚃','⚄','⚅'][n-1];
+  bp=bp+n;
+  if(bp>=17){bp=17;paintBoard();
+    document.getElementById('mqbox').innerHTML='<div class="card" style="background:var(--lemon)">'+
+    '<b>🏆 真相大白！</b><div class="sub">你走完了 18 格線索，Ivy 的清白被還了回來——原來檔案被誤存進施工中的備份硬碟，而不是被刪除。闖關得分 '+bscore+'。</div>'+
+    '<button class="btn p" onclick="resetBoard()">🔄 再玩一次</button></div>';
+    fire();return;}
+  paintBoard();
+  const q=rnd(BQ),L=['A','B','C','D'];
+  window.__BQNOW={q:q,sq:bp+1,clue:BOARD[bp],L:L};
+  document.getElementById('mqbox').innerHTML='<div class="card"><div class="sp">'+
+   '<span class="pill">第 '+(bp+1)+' 格：'+BOARD[bp]+'</span></div>'+
+   '<div style="font-weight:700;margin:10px 0">'+q.q+'</div>'+
+   q.o.map((o,i)=>'<button class="opt" onclick="bAns(this,'+i+','+q.a+',\''+q.e.replace(/'/g,"\\'")+'\')">('+L[i]+') '+o+'</button>').join('')+
+   '<div id="bfb"></div></div>';
+}
+function bAns(btn,i,a,e){
+  const box=btn.parentNode;
+  box.querySelectorAll('.opt').forEach((b,k)=>{b.onclick=null;if(k===a)b.classList.add('ok');else{b.classList.add('dim');if(k===i)b.classList.add('no')}});
+  if(typeof LOG!=='undefined'&&window.__BQNOW){const b=window.__BQNOW;
+    logPush('mono',{sq:b.sq,clue:b.clue,q:b.q.q,pick:'('+b.L[i]+') '+b.q.o[i],
+      key:'('+b.L[a]+') '+b.q.o[a],ok:i===a,exp:e});}
+  if(i===a){bscore+=300;addScore(300);fire()}else{addScore(-50)}
+  document.getElementById('msc').textContent=bscore;
+  document.getElementById('bfb').innerHTML='<div style="font-weight:800;margin-top:8px;color:'+(i===a?'var(--ok)':'var(--bad)')+'">'+
+   (i===a?'🎯 +300 分，線索解鎖！':'💧 −50 分，這格線索先記下來')+'</div>'+
+   '<button class="btn p" style="margin-top:6px" onclick="this.nextElementSibling.classList.toggle(\'show\')">📖 參考解答：</button>'+
+   '<div class="ans">'+e+'</div>';
+}
+paintBoard();
+
+
+/* ================= 📤 繳交與下載（七個練習頁籤共用） ================= */
+const IDKEY='u8id';
+let ID={cls:'',no:'',name:''};
+try{const r=localStorage.getItem(IDKEY);if(r)ID=Object.assign(ID,JSON.parse(r))}catch(e){}
+function idSave(){try{localStorage.setItem(IDKEY,JSON.stringify(ID))}catch(e){}}
+function idSet(f,v){ID[f]=v.trim();idSave();
+  document.querySelectorAll('.idf-'+f).forEach(e=>{if(e.value!==ID[f])e.value=ID[f]});}
+function idLine(){return '班級 '+(ID.cls||'（未填）')+'　座號 '+(ID.no||'（未填）')+'　姓名 '+(ID.name||'（未填）');}
+function safeName(t){return String(t).replace(/[\\/:*?"<>|]/g,'').replace(/\s+/g,'');}
+function idFile(){return safeName((ID.cls||'未填班級')+'-'+(ID.no||'未填座號')+'-'+(ID.name||'未填姓名'));}
+function stamp(){const d=new Date(),z=n=>('0'+n).slice(-2);
+  return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())+' '+z(d.getHours())+':'+z(d.getMinutes());}
+function fstamp(){const d=new Date(),z=n=>('0'+n).slice(-2);
+  return ''+d.getFullYear()+z(d.getMonth()+1)+z(d.getDate())+'-'+z(d.getHours())+z(d.getMinutes());}
+const esc2=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+/* 各關作答紀錄 */
+const LOG={sent:[],listen:[],match:[],mcq:[],cloze:[],up:[],mono:[]};
+function logPush(k,o){o.t=stamp();LOG[k].push(o);}
+
+/* 報表列：題目／你的作答／正確答案／判定 */
+function rowsTable(head,rows){
+  if(!rows.length)return '<p class="empty">這一關目前沒有作答紀錄。請先完成練習，再回到這裡下載作業檔。</p>';
+  return '<table><thead><tr>'+head.map(h=>'<th>'+esc2(h)+'</th>').join('')+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+}
+function mark(ok){return ok?'<b class="ok">✅ 正確</b>':'<b class="no">❌ 待訂正</b>';}
+
+const REP={
+ sent:{name:'✍️ 鋸子英文15級分（例句閃卡）',build:function(){
+   const rows=LOG.sent.map((x,i)=>['第 '+(i+1)+' 張',esc2(x.en),esc2(x.zh),esc2(x.w)+'（'+esc2(x.pos)+'　'+esc2(x.ch)+'）']);
+   return '<p class="sum">已研讀例句卡 '+LOG.sent.length+' 張　｜　本單元例句總數 '+SENTS.length+' 句</p>'+
+     rowsTable(['順序','English Sentence','中文翻譯','核心單字與詞義'],rows);}},
+ listen:{name:'💡 聽！我多準（聽力填空）',build:function(){
+   const rows=LOG.listen.map((x,i)=>['第 '+(i+1)+' 次',esc2(x.sent),esc2(x.ans||'（未作答）'),esc2(x.key),mark(x.ok)]);
+   const ok=LOG.listen.filter(x=>x.ok).length;
+   return '<p class="sum">檢查次數 '+LOG.listen.length+' 次　｜　正確 '+ok+' 次　｜　目前輪次 第 '+lr+' 輪</p>'+
+     rowsTable(['次序','挖空句子','你填的字','正確答案','判定'],rows);}},
+ match:{name:'💡 字彙對對碰',build:function(){
+   const rows=LOG.match.map(x=>[esc2(x.cat),esc2(x.zh),esc2(x.ans||'（未填）'),esc2(x.key),mark(x.ok)]);
+   const ok=LOG.match.filter(x=>x.ok).length;
+   return '<p class="sum">送出批改題數 '+LOG.match.length+' 題　｜　答對 '+ok+' 題</p>'+
+     rowsTable(['題組類別','提示用中譯','你的配對','正確答案','判定'],rows);}},
+ mcq:{name:'💯 學測選擇題',build:function(){
+   const rows=LOG.mcq.map((x,i)=>['Q'+(i+1),esc2(x.q),esc2(x.pick),esc2(x.key),mark(x.ok),esc2(x.exp)]);
+   const ok=LOG.mcq.filter(x=>x.ok).length;
+   return '<p class="sum">作答題數 '+LOG.mcq.length+' 題　｜　答對 '+ok+' 題　｜　本回得分 '+qscore+' 分</p>'+
+     rowsTable(['題號','題目','你的選擇','正確答案','判定','參考解答與解析'],rows);}},
+ cloze:{name:'🐘📌 文意選填戰站讚',build:function(){
+   const rows=LOG.cloze.map(x=>[esc2(x.passage),'第 '+x.n+' 格',esc2(x.pick),esc2(x.key),mark(x.ok),esc2(x.exp)]);
+   const ok=LOG.cloze.filter(x=>x.ok).length;
+   return '<p class="sum">點選次數 '+LOG.cloze.length+' 次　｜　答對 '+ok+' 格　｜　目前篇章：'+esc2(CLOZE[cz].t)+'</p>'+
+     rowsTable(['篇章','空格','你的選擇','正確答案','判定','參考解答與解析'],rows);}},
+ up:{name:'📐 不只會考試：句子優化ing',build:function(){
+   const rows=LOG.up.map((x,i)=>['第 '+x.round+' 輪 Q'+x.idx,esc2(x.word)+'（'+esc2(x.pos)+'　'+esc2(x.ch)+'）',
+     esc2(x.target)+'（'+esc2(x.target_ch)+'）',esc2(x.baby),esc2(x.ans),mark(x.ok),esc2(x.model)+'<br>'+esc2(x.model_ch)]);
+   const ok=LOG.up.filter(x=>x.ok).length;
+   return '<p class="sum">送出批改 '+LOG.up.length+' 題　｜　通過 '+ok+' 題　｜　目前第 '+currentRound+' 輪，本輪得分 '+roundScore+' / 2000</p>'+
+     rowsTable(['輪次題號','核心單字','指定搭配詞／句型','平淡無奇版','你寫的句子','判定','課堂參考範例'],rows);}},
+ mono:{name:'🎲 大富翁闖關',build:function(){
+   const rows=LOG.mono.map(x=>['第 '+x.sq+' 格：'+esc2(x.clue),esc2(x.q),esc2(x.pick),esc2(x.key),mark(x.ok),esc2(x.exp)]);
+   const ok=LOG.mono.filter(x=>x.ok).length;
+   return '<p class="sum">作答題數 '+LOG.mono.length+' 題　｜　答對 '+ok+' 題　｜　目前位置 第 '+(bp+1)+' / 18 格　｜　闖關得分 '+bscore+' 分</p>'+
+     rowsTable(['線索格','題目','你的選擇','正確答案','判定','參考解答與解析'],rows);}}
+};
+
+const RSTYLE='body{font-family:"Microsoft JhengHei","微軟正黑體","Segoe UI",sans-serif;color:#1E1B18;'+
+ 'background:#FFF9E8;line-height:1.7;padding:18px;}h1{font-size:20px;margin:0 0 4px}'+
+ 'h2{font-size:17px;margin:18px 0 6px}.id{font-size:15px;font-weight:700;margin:6px 0}'+
+ '.sum{font-weight:700;background:#FFF1B8;border:1px solid #E2D9CC;border-radius:8px;padding:8px}'+
+ 'table{border-collapse:collapse;width:100%;margin-top:8px;font-size:13px}'+
+ 'th,td{border:1px solid #B9AE9C;padding:6px 8px;vertical-align:top;text-align:left}'+
+ 'th{background:#E8F7EC}.ok{color:#2E9E6B}.no{color:#C2435F}'+
+ '.empty{background:#FFE9E4;border:1px solid #E2D9CC;border-radius:8px;padding:10px}'+
+ '.sign{margin-top:22px;border-top:1px dashed #B9AE9C;padding-top:10px;font-size:13px}';
+
+function repBody(k){
+  return '<h1>🐣 U8 戰勝學測核單閃卡與互動學習網頁　Level 4 U8 pp. 77-85</h1>'+
+   '<h2>'+REP[k].name+'　練習結果</h2>'+
+   '<div class="id">'+esc2(idLine())+'</div>'+
+   '<div class="id">完成時間：'+stamp()+'　｜　全站累計總分：'+S.total+' 分　｜　錯題池：'+S.wrong.length+' 字</div>'+
+   REP[k].build()+
+   '<div class="sign">📸 完成下載後，請將下載的作業檔案上傳至 Google Classroom 繳交。<br>教師簽閱：____________　　訂正完成日期：____________</div>';
+}
+function repDoc(k){
+  return '<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8">'+
+   '<title>'+esc2(idFile()+' U8 '+REP[k].name)+'</title><style>'+RSTYLE+'</style></head><body>'+
+   repBody(k)+'</body></html>';
+}
+function previewRep(k){
+  const box=document.getElementById('pv_'+k);
+  if(box.classList.contains('show')){box.classList.remove('show');box.innerHTML='';
+    document.getElementById('pb_'+k).textContent='👁️ 預覽本關結果';return;}
+  box.innerHTML=repBody(k);box.classList.add('show');
+  document.getElementById('pb_'+k).textContent='👁️ 收合預覽';
+}
+function saveBlob(text,mime,fname){
+  try{
+    const blob=new Blob(['﻿'+text],{type:mime});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download=fname;
+    document.body.appendChild(a);a.click();
+    setTimeout(()=>{URL.revokeObjectURL(url);a.remove()},1200);
+    toast('已下載：'+fname);
+  }catch(e){toast('下載失敗，請改按「👁️ 預覽本關結果」後擷取畫面');}
+}
+function dlWord(k){saveBlob(repDoc(k),'application/msword',idFile()+'_U8_'+k+'_'+fstamp()+'.doc');}
+function dlHtml(k){saveBlob(repDoc(k),'text/html;charset=utf-8',idFile()+'_U8_'+k+'_'+fstamp()+'.html');}
+
+function subPanel(paneId,k){
+  const sec=document.getElementById(paneId);if(!sec)return;
+  const d=document.createElement('div');d.className='subcard';
+  d.innerHTML='<div class="subttl">📤 繳交本單元練習結果</div>'+
+   '<div class="subid">班級 <input class="idf-cls" value="'+esc2(ID.cls)+'" placeholder="例：10 忠" oninput="idSet(\'cls\',this.value)">'+
+   '　座號 <input class="idf-no" style="width:72px" value="'+esc2(ID.no)+'" placeholder="例：07" oninput="idSet(\'no\',this.value)">'+
+   '　姓名 <input class="idf-name" value="'+esc2(ID.name)+'" placeholder="例：王小明" oninput="idSet(\'name\',this.value)"></div>'+
+   '<button class="subbtn" id="pb_'+k+'" onclick="previewRep(\''+k+'\')">👁️ 預覽本關結果</button>'+
+   '<button class="subbtn" onclick="dlWord(\''+k+'\')">📄 下載 Word 作業檔（.doc）</button>'+
+   '<button class="subbtn" onclick="dlHtml(\''+k+'\')">🌐 下載網頁作業檔（.html）</button>'+
+   '<div class="subnote">📸 完成下載後，請將下載的作業檔案上傳至 Google Classroom 繳交。</div>'+
+   '<div class="subprev" id="pv_'+k+'"></div>';
+  sec.appendChild(d);
+}
+[['p1','sent'],['p2','listen'],['p3','match'],['p4','mcq'],['p5','cloze'],['p6','up'],['p7','mono']]
+  .forEach(x=>subPanel(x[0],x[1]));
+
+/* ================= 啟動 ================= */
+paintScore();newListen();logSent();go(0);
+</script>
+</body>
+</html>
